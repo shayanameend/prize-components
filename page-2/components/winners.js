@@ -1,4 +1,4 @@
-function initWinnersSection({ container, data }) {
+function loadWinners({ container, data }) {
   // Create heading
   const heading = document.createElement("h2");
   heading.className = "winners-heading";
