@@ -16,20 +16,7 @@ function loadWins({ container, data }) {
   });
 }
 
-function formatDate(date, longFormat = false) {
-  if (longFormat) {
-    return new Date(date).toLocaleDateString("en-US", {
-      month: "long",
-      day: "numeric",
-      year: "numeric",
-    });
-  }
-  return new Date(date).toLocaleDateString("en-US", {
-    month: "numeric",
-    day: "numeric",
-    year: "numeric",
-  });
-}
+// Date formatting moved to shared/components/utils.js
 
 function createRegularWinCard(win) {
   const card = document.createElement("div");

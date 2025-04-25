@@ -1,0 +1,27 @@
+/* Badge Styles */
+.win-badge {
+  display: inline-flex;
+  gap: var(--spacing-xs);
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.badge-mini {
+  background-color: var(--mini-badge-bg);
+  color: var(--mini-badge-text);
+}
+
+.badge-main {
+  background-color: var(--main-badge-bg);
+  color: var(--main-badge-text);
+}
+
+/* Responsive styles */
+@media (max-width: 576px) {
+  .win-badge {
+    font-size: var(--font-size-xs);
+  }
+}

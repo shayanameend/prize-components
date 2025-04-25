@@ -64,13 +64,7 @@ function loadWinners({ container, data }) {
   });
 }
 
-function formatDate(date) {
-  return new Date(date).toLocaleDateString("en-US", {
-    month: "numeric",
-    day: "numeric",
-    year: "numeric",
-  });
-}
+// Date formatting moved to shared/components/utils.js
 
 function createRegularWinnerRow(winner) {
   const row = document.createElement("div");
