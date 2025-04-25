@@ -20,11 +20,11 @@ function loadTotalPrize({ container, value }) {
 
 function formatCentsToDollars(cents) {
   const dollars = cents / 100;
-  const formatted = dollars.toLocaleString('en-US', {
-    style: 'currency',
-    currency: 'USD',
+  const formatted = dollars.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
     minimumFractionDigits: 2,
-    maximumFractionDigits: 2
+    maximumFractionDigits: 2,
   });
 
   return formatted + " USD";
@@ -39,7 +39,7 @@ function animateCountUp(element, startValue, endValue, duration = 2000) {
 
     if (elapsedTime < duration) {
       const progress = easeOutExpo(elapsedTime / duration);
-      const currentValue = Math.floor(startValue + (difference * progress));
+      const currentValue = Math.floor(startValue + difference * progress);
       element.textContent = formatCentsToDollars(currentValue);
       requestAnimationFrame(updateCount);
     } else {

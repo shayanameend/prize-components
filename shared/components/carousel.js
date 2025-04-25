@@ -2,11 +2,11 @@
 function createCarousel({
   container,
   images,
-  altText = 'Image',
+  altText = "Image",
   showBadge = false,
-  badgeText = '',
-  badgeIcon = '',
-  badgeClass = ''
+  badgeText = "",
+  badgeIcon = "",
+  badgeClass = "",
 }) {
   const imageContainer = document.createElement("div");
   imageContainer.className = "carousel-image-container";
@@ -15,7 +15,9 @@ function createCarousel({
   if (showBadge) {
     const badge = document.createElement("span");
     badge.className = `carousel-badge ${badgeClass}`;
-    badge.innerHTML = badgeIcon ? `<i class="${badgeIcon}"></i> ${badgeText}` : badgeText;
+    badge.innerHTML = badgeIcon
+      ? `<i class="${badgeIcon}"></i> ${badgeText}`
+      : badgeText;
     imageContainer.appendChild(badge);
   }
 
@@ -44,7 +46,7 @@ function createCarousel({
     img.alt = `${altText} - ${index + 1}`;
     img.dataset.index = index;
 
-    img.onload = function() {
+    img.onload = function () {
       if (index === 0) {
         img.style.opacity = "1";
       }
@@ -83,54 +85,74 @@ function createCarousel({
       const newImage = carouselImages[index];
       const currentImage = carouselImages[currentIndex];
 
-      newImage.classList.remove('slide-in-from-left', 'slide-in-from-right', 'slide-out-to-left', 'slide-out-to-right', 'prev', 'next');
+      newImage.classList.remove(
+        "slide-in-from-left",
+        "slide-in-from-right",
+        "slide-out-to-left",
+        "slide-out-to-right",
+        "prev",
+        "next",
+      );
 
-      if (direction === 'next') {
-        newImage.classList.add('next');
-      } else if (direction === 'prev') {
-        newImage.classList.add('prev');
+      if (direction === "next") {
+        newImage.classList.add("next");
+      } else if (direction === "prev") {
+        newImage.classList.add("prev");
       }
 
       // Force a reflow to ensure the browser recognizes the position change
       void newImage.offsetWidth;
 
-      if (direction === 'next') {
-        newImage.classList.add('active');
-        currentImage.classList.add('slide-out-to-left');
-        newImage.classList.add('slide-in-from-right');
-      } else if (direction === 'prev') {
-        newImage.classList.add('active');
-        currentImage.classList.add('slide-out-to-right');
-        newImage.classList.add('slide-in-from-left');
+      if (direction === "next") {
+        newImage.classList.add("active");
+        currentImage.classList.add("slide-out-to-left");
+        newImage.classList.add("slide-in-from-right");
+      } else if (direction === "prev") {
+        newImage.classList.add("active");
+        currentImage.classList.add("slide-out-to-right");
+        newImage.classList.add("slide-in-from-left");
       }
 
       setTimeout(() => {
         carouselImages.forEach((img) => {
-          img.classList.remove('slide-in-from-left', 'slide-in-from-right', 'slide-out-to-left', 'slide-out-to-right');
+          img.classList.remove(
+            "slide-in-from-left",
+            "slide-in-from-right",
+            "slide-out-to-left",
+            "slide-out-to-right",
+          );
 
           const imgIndex = parseInt(img.dataset.index);
-          img.classList.remove('active', 'prev', 'next');
+          img.classList.remove("active", "prev", "next");
 
           if (imgIndex === index) {
-            img.classList.add('active');
+            img.classList.add("active");
           } else if (imgIndex < index) {
-            img.classList.add('prev');
+            img.classList.add("prev");
           } else {
-            img.classList.add('next');
+            img.classList.add("next");
           }
         });
       }, 400);
     } else {
       carouselImages.forEach((img) => {
-        img.classList.remove('active', 'prev', 'next', 'slide-in-from-left', 'slide-in-from-right', 'slide-out-to-left', 'slide-out-to-right');
+        img.classList.remove(
+          "active",
+          "prev",
+          "next",
+          "slide-in-from-left",
+          "slide-in-from-right",
+          "slide-out-to-left",
+          "slide-out-to-right",
+        );
 
         const imgIndex = parseInt(img.dataset.index);
         if (imgIndex === index) {
-          img.classList.add('active');
+          img.classList.add("active");
         } else if (imgIndex < index) {
-          img.classList.add('prev');
+          img.classList.add("prev");
         } else {
-          img.classList.add('next');
+          img.classList.add("next");
         }
       });
     }
@@ -139,13 +161,14 @@ function createCarousel({
   }
 
   prevButton.addEventListener("click", () => {
-    const newIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length;
-    showImage(newIndex, 'prev');
+    const newIndex =
+      (currentIndex - 1 + carouselImages.length) % carouselImages.length;
+    showImage(newIndex, "prev");
   });
 
   nextButton.addEventListener("click", () => {
     const newIndex = (currentIndex + 1) % carouselImages.length;
-    showImage(newIndex, 'next');
+    showImage(newIndex, "next");
   });
 
   dots.forEach((dot) => {
@@ -154,9 +177,9 @@ function createCarousel({
       // Determine direction based on index
       let direction = null;
       if (index > currentIndex) {
-        direction = 'next';
+        direction = "next";
       } else if (index < currentIndex) {
-        direction = 'prev';
+        direction = "prev";
       }
       showImage(index, direction);
     });

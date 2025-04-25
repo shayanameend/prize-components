@@ -70,7 +70,8 @@
   color: var(--text-primary);
 }
 
-.header-cell.date-cell, .header-cell.prize-cell {
+.header-cell.date-cell,
+.header-cell.prize-cell {
   color: var(--text-primary);
   font-weight: 600;
 }
@@ -156,24 +157,30 @@
 
 @media (max-width: 992px) {
   /* Adjust the grid layout for winners table */
-  .winners-header, .winner-row, .main-prize-info {
+  .winners-header,
+  .winner-row,
+  .main-prize-info {
     grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
   }
 }
 
 @media (max-width: 768px) {
   /* Adjust the grid layout for winners table */
-  .winners-header, .winner-row, .main-prize-info {
+  .winners-header,
+  .winner-row,
+  .main-prize-info {
     grid-template-columns: 2fr 1fr 2fr;
   }
 
   /* Keep user, win type, and prize columns, hide country and date */
-  .header-cell.country-cell, .header-cell.date-cell {
+  .header-cell.country-cell,
+  .header-cell.date-cell {
     display: none;
   }
 
   /* Hide country and date cells in rows */
-  .winner-row .country-cell, .winner-row .date-cell {
+  .winner-row .country-cell,
+  .winner-row .date-cell {
     display: none;
   }
 
@@ -196,8 +203,27 @@
   }
 
   /* Adjust main prize row */
-  .main-prize-info .country-cell, .main-prize-info .date-cell {
-    display: none;
+  .main-prize-info .country-cell,
+  .main-prize-info .date-cell {
+    display: none !important; /* Force hide these cells */
+  }
+
+  /* Add country and date info to main prize user cell */
+  .main-prize-row .user-cell {
+    position: relative;
+  }
+
+  .main-prize-user-info {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .main-prize-user-info::after {
+    content: attr(data-date) " • " attr(data-country) !important;
+    display: block !important; /* Force display */
+    font-size: var(--font-size-sm) !important;
+    color: var(--text-light) !important;
+    margin-top: var(--spacing-xs) !important;
   }
 }
 
@@ -207,7 +233,8 @@
     display: none;
   }
 
-  .winner-row, .main-prize-info {
+  .winner-row,
+  .main-prize-info {
     grid-template-columns: 1fr;
     gap: var(--spacing-sm);
   }
@@ -217,23 +244,34 @@
   }
 
   /* Show only the most important cells in mobile view */
-  .winner-row .user-cell, .winner-row .type-cell, .winner-row .prize-cell {
+  .winner-row .user-cell,
+  .winner-row .type-cell,
+  .winner-row .prize-cell {
     display: flex;
   }
 
-  .winner-row .country-cell, .winner-row .date-cell {
+  .winner-row .country-cell,
+  .winner-row .date-cell {
     display: none;
   }
 
   /* Style cells for mobile */
 
   /* Adjust main prize */
-  .main-prize-info .user-cell, .main-prize-info .type-cell, .main-prize-info .prize-cell {
+  .main-prize-info .user-cell,
+  .main-prize-info .type-cell,
+  .main-prize-info .prize-cell {
     display: flex;
   }
 
-  .main-prize-info .country-cell, .main-prize-info .date-cell {
-    display: none;
+  .main-prize-info .country-cell,
+  .main-prize-info .date-cell {
+    display: none !important;
+  }
+
+  /* Ensure the after content is displayed in mobile view too */
+  .main-prize-user-info::after {
+    display: block !important;
   }
 
   /* No carousel-specific styles needed here */

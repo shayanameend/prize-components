@@ -14,10 +14,10 @@ function loadWinners({ container, data }) {
     { className: "country-cell", text: "Country" },
     { className: "win-type-cell", text: "Win Type" },
     { className: "date-cell", text: "Date" },
-    { className: "prize-cell", text: "Prize Won" }
+    { className: "prize-cell", text: "Prize Won" },
   ];
 
-  headerCells.forEach(cell => {
+  headerCells.forEach((cell) => {
     const headerCell = document.createElement("div");
     headerCell.className = `header-cell ${cell.className}`;
     headerCell.textContent = cell.text;
@@ -33,7 +33,7 @@ function loadWinners({ container, data }) {
   container.appendChild(winnersTable);
   loadWinners({
     container: winnersList,
-    data: data
+    data: data,
   });
 }
 
@@ -54,8 +54,6 @@ function loadWinners({ container, data }) {
     container.appendChild(winnerRow);
   });
 }
-
-
 
 function createRegularWinnerRow(winner) {
   const row = document.createElement("div");
@@ -146,7 +144,7 @@ function createMainPrizeRow(winner) {
   userCell.setAttribute("data-label", "User");
 
   const userInfo = document.createElement("div");
-  userInfo.className = "user-info";
+  userInfo.className = "user-info main-prize-user-info";
   userInfo.setAttribute("data-date", formatDate(winner.date));
   userInfo.setAttribute("data-prize", winner.prize);
   userInfo.setAttribute("data-country", `${winner.country} ${winner.flag}`);
@@ -209,12 +207,12 @@ function createMainPrizeRow(winner) {
     images: winner.images,
     altText: winner.prize,
     showBadge: true,
-    badgeText: 'Main Prize',
-    badgeIcon: 'fa-solid fa-trophy',
-    badgeClass: 'badge-main'
+    badgeText: "Main Prize",
+    badgeIcon: "fa-solid fa-trophy",
+    badgeClass: "badge-main",
   });
 
-  imageContainer.classList.add('main-prize-image-container');
+  imageContainer.classList.add("main-prize-image-container");
 
   row.appendChild(imageContainer);
 

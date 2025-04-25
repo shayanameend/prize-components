@@ -16,8 +16,6 @@ function loadWins({ container, data }) {
   });
 }
 
-
-
 function createRegularWinCard(win) {
   const card = document.createElement("div");
   card.className = "win-card card";
@@ -97,12 +95,12 @@ function createMainPrizeCard(win) {
     images: win.images,
     altText: win.title,
     showBadge: true,
-    badgeText: 'Main Prize',
-    badgeIcon: 'fa-solid fa-trophy',
-    badgeClass: 'badge-main'
+    badgeText: "Main Prize",
+    badgeIcon: "fa-solid fa-trophy",
+    badgeClass: "badge-main",
   });
 
-  imageContainer.classList.add('main-prize-image-container');
+  imageContainer.classList.add("main-prize-image-container");
 
   card.appendChild(imageContainer);
 
