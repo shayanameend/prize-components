@@ -1,5 +1,5 @@
 function loadTotalPrize({ container, value }) {
-  // Format the cents value to dollars with commas and 2 decimal places
+
   const formattedValue = formatCentsToDollars(value);
 
   const totalPrizeCard = document.createElement("div");
@@ -18,12 +18,8 @@ function loadTotalPrize({ container, value }) {
   container.appendChild(totalPrizeCard);
 }
 
-// Helper function to format cents to dollars
 function formatCentsToDollars(cents) {
-  // Convert cents to dollars
   const dollars = cents / 100;
-
-  // Format with commas and 2 decimal places
   const formatted = dollars.toLocaleString('en-US', {
     style: 'currency',
     currency: 'USD',

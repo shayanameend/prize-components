@@ -16,7 +16,7 @@ function loadWins({ container, data }) {
   });
 }
 
-// Date formatting moved to shared/components/utils.js
+
 
 function createRegularWinCard(win) {
   const card = document.createElement("div");
@@ -93,7 +93,6 @@ function createMainPrizeCard(win) {
   const card = document.createElement("div");
   card.className = "main-prize-card card";
 
-  // Use the shared carousel component
   const imageContainer = createCarousel({
     images: win.images,
     altText: win.title,
@@ -103,7 +102,6 @@ function createMainPrizeCard(win) {
     badgeClass: 'badge-main'
   });
 
-  // Add the carousel-specific class for styling
   imageContainer.classList.add('main-prize-image-container');
 
   card.appendChild(imageContainer);

@@ -1,14 +1,5 @@
 /**
- * Creates an image carousel component
- * @param {Object} options - Configuration options
- * @param {HTMLElement} options.container - Container element to append the carousel to
- * @param {Array<string>} options.images - Array of image URLs
- * @param {string} [options.altText='Image'] - Base alt text for images
- * @param {boolean} [options.showBadge=false] - Whether to show a badge on the carousel
- * @param {string} [options.badgeText=''] - Text to display in the badge
- * @param {string} [options.badgeIcon=''] - Icon class for the badge
- * @param {string} [options.badgeClass=''] - Additional CSS class for the badge
- * @returns {HTMLElement} - The carousel container element
+ * Creates an image carousel with navigation and indicators
  */
 function createCarousel({
   container,
@@ -19,11 +10,10 @@ function createCarousel({
   badgeIcon = '',
   badgeClass = ''
 }) {
-  // Create image container
   const imageContainer = document.createElement("div");
   imageContainer.className = "carousel-image-container";
 
-  // Add badge if needed
+  // Badge
   if (showBadge) {
     const badge = document.createElement("span");
     badge.className = `carousel-badge ${badgeClass}`;
@@ -31,7 +21,7 @@ function createCarousel({
     imageContainer.appendChild(badge);
   }
 
-  // Add navigation buttons
+  // Navigation
   const prevButton = document.createElement("div");
   prevButton.className = "carousel-nav nav-prev";
   prevButton.innerHTML = '<i class="fa-solid fa-chevron-left"></i>';
@@ -41,8 +31,6 @@ function createCarousel({
   nextButton.className = "carousel-nav nav-next";
   nextButton.innerHTML = '<i class="fa-solid fa-chevron-right"></i>';
   imageContainer.appendChild(nextButton);
-
-  // Add images
   images.forEach((imgSrc, index) => {
     const img = document.createElement("img");
     img.className = "carousel-image";
@@ -53,7 +41,7 @@ function createCarousel({
     imageContainer.appendChild(img);
   });
 
-  // Add dots container
+  // Indicators
   const dotsContainer = document.createElement("div");
   dotsContainer.className = "carousel-dots";
 
@@ -65,13 +53,10 @@ function createCarousel({
   });
 
   imageContainer.appendChild(dotsContainer);
-  
-  // If container is provided, append the carousel
+
   if (container) {
     container.appendChild(imageContainer);
   }
-
-  // Set up carousel functionality
   let currentIndex = 0;
   const carouselImages = imageContainer.querySelectorAll(".carousel-image");
   const dots = dotsContainer.querySelectorAll(".dot");

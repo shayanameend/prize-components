@@ -1,8 +1,5 @@
 /**
- * Format a date to a string
- * @param {Date} date - The date to format
- * @param {boolean} [longFormat=false] - Whether to use long format (month name) or short format (numeric month)
- * @returns {string} - The formatted date string
+ * Format date to Month Day, Year or MM/DD/YYYY
  */
 function formatDate(date, longFormat = false) {
   if (longFormat) {

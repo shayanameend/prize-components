@@ -1,19 +1,14 @@
 function loadWinners({ container, data }) {
-  // Create heading
   const heading = document.createElement("h2");
   heading.className = "winners-heading";
   heading.textContent = "All Winners";
   container.appendChild(heading);
 
-  // Create winners table
   const winnersTable = document.createElement("div");
   winnersTable.className = "winners-table";
 
-  // Create header
   const winnersHeader = document.createElement("div");
   winnersHeader.className = "winners-header";
-
-  // Add header cells
   const headerCells = [
     { className: "user-cell", text: "User" },
     { className: "country-cell", text: "Country" },
@@ -31,15 +26,11 @@ function loadWinners({ container, data }) {
 
   winnersTable.appendChild(winnersHeader);
 
-  // Create winners list container
   const winnersList = document.createElement("div");
   winnersList.id = "winners-list";
   winnersTable.appendChild(winnersList);
 
-  // Add table to main container
   container.appendChild(winnersTable);
-
-  // Load winners into the list
   loadWinners({
     container: winnersList,
     data: data
@@ -64,7 +55,7 @@ function loadWinners({ container, data }) {
   });
 }
 
-// Date formatting moved to shared/components/utils.js
+
 
 function createRegularWinnerRow(winner) {
   const row = document.createElement("div");
@@ -214,7 +205,6 @@ function createMainPrizeRow(winner) {
 
   row.appendChild(infoSection);
 
-  // Use the shared carousel component
   const imageContainer = createCarousel({
     images: winner.images,
     altText: winner.prize,
@@ -224,7 +214,6 @@ function createMainPrizeRow(winner) {
     badgeClass: 'badge-main'
   });
 
-  // Add the carousel-specific class for styling
   imageContainer.classList.add('main-prize-image-container');
 
   row.appendChild(imageContainer);
