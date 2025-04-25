@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Page Title -->
     <title>Prize Components</title>
 
@@ -30,7 +30,7 @@
             loadProfile({
                 container: document.querySelector('#profile-container'),
                 name: 'Nur Alam',
-                photo: 'https://images.unsplash.com',
+                photo: './assets/profile.jpg',
                 country: 'United States',
                 flag: '🇺🇸',
                 socialMedia: {
@@ -48,42 +48,38 @@
                     },
                 }
             });
-            
+
             loadWins({
                 container: document.querySelector('#wins-container'),
                 data: [
                     {
-                        type: "incentive", // incentive, mini, main
-                        // for incentive or mini
+                        type: "incentive",
                         date: new Date("2022-07-20"),
                         title: "24 Pack Red Bull",
-                        image: "https://images.unsplash.com",
+                        image: "./assets/incentive1.jpg",
                     },
                     {
-                        type: "mini", // incentive, mini, main
-                        // for incentive or mini
+                        type: "mini",
                         date: new Date("2022-05-21"),
-                        title: "24 Pack Red Bull",
-                        image: "https://images.unsplash.com",
+                        title: "Iced Rolex",
+                        image: "./assets/mini.jpg",
                     },
                     {
-                        type: "incentive", // incentive, mini, main
-                        // for incentive or mini
-                        date: new Date("2022-10-3"),
-                        title: "24 Pack Red Bull",
-                        image: "https://images.unsplash.com",
+                        type: "incentive",
+                        date: new Date("2022-03-10"),
+                        title: "Oculus Headset",
+                        image: "./assets/incentive2.jpg",
                     },
                     {
-                        type: "main", // incentive, mini, main
-                        // for main
+                        type: "main",
                         date: new Date("2022-01-01"),
-                        title: "Pereshing 140 Yacht + 12 Million in Cash.",
+                        title: "Pershing 140 Yacht + 12 Million in Cash.",
                         subtitle: "Nur Alam Congrats!",
                         images: [
-                            "https://images.unsplash.com",
-                            "https://images.unsplash.com",
-                            "https://images.unsplash.com",
-                            "https://images.unsplash.com",
+                            "./assets/main1.jpg",
+                            "./assets/main2.jpg",
+                            "./assets/main3.jpg",
+                            "./assets/main1.jpg",
                         ]
                     }
                 ]
