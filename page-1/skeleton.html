@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Page Title -->
+    <title>Prize Components</title>
+
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="../global.css">
+
+    <!-- Page 1 Styles -->
+    <link rel="stylesheet" href="./page1.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <div id="main-container">
+        <div id="profile-container"></div>
+        <div id="wins-container"></div>
+    </div>
+
+    <script src="./components/profile.js"></script>
+    <script src="./components/wins.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProfile({
+                container: document.querySelector('#profile-container'),
+                name: 'Nur Alam',
+                photo: 'https://images.unsplash.com',
+                country: 'United States',
+                flag: '🇺🇸',
+                socialMedia: {
+                    facebook: {
+                        label: 'Facebook',
+                        url: 'https://www.facebook.com'
+                    },
+                    instagram: {
+                        label: 'Instagram',
+                        url: 'https://www.instagram.com'
+                    },
+                    twitter: {
+                        label: 'Twitter',
+                        url: 'https://www.twitter.com'
+                    },
+                }
+            });
+            
+            loadWins({
+                container: document.querySelector('#wins-container'),
+                data: [
+                    {
+                        type: "incentive", // incentive, mini, main
+                        // for incentive or mini
+                        date: new Date("2022-07-20"),
+                        title: "24 Pack Red Bull",
+                        image: "https://images.unsplash.com",
+                    },
+                    {
+                        type: "mini", // incentive, mini, main
+                        // for incentive or mini
+                        date: new Date("2022-05-21"),
+                        title: "24 Pack Red Bull",
+                        image: "https://images.unsplash.com",
+                    },
+                    {
+                        type: "incentive", // incentive, mini, main
+                        // for incentive or mini
+                        date: new Date("2022-10-3"),
+                        title: "24 Pack Red Bull",
+                        image: "https://images.unsplash.com",
+                    },
+                    {
+                        type: "main", // incentive, mini, main
+                        // for main
+                        date: new Date("2022-01-01"),
+                        title: "Pereshing 140 Yacht + 12 Million in Cash.",
+                        subtitle: "Nur Alam Congrats!",
+                        images: [
+                            "https://images.unsplash.com",
+                            "https://images.unsplash.com",
+                            "https://images.unsplash.com",
+                            "https://images.unsplash.com",
+                        ]
+                    }
+                ]
+            });
+        });
+    </script>
+</body>
+</html>
