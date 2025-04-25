@@ -1,0 +1,279 @@
+#main-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: var(--spacing-md);
+}
+
+#total-prize-container {
+  display: flex;
+  justify-content: center;
+}
+
+.total-prize-card {
+  background-color: #0a1929;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm);
+  text-align: center;
+  width: 400px;
+  max-width: 100%;
+}
+
+.total-prize-heading {
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.total-prize-value {
+  font-size: var(--font-size-xxxl);
+  font-weight: 500;
+}
+
+#winners-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.winners-heading {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-xs);
+}
+
+.winners-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: var(--spacing-xs);
+}
+
+.winners-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.header-cell {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.header-cell.date-cell, .header-cell.prize-cell {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.winner-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.winner-cell {
+  display: flex;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.user-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--border-radius-circle);
+  object-fit: cover;
+}
+
+.user-name {
+  font-weight: 600;
+}
+
+.country-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--text-light);
+}
+
+.win-badge {
+  display: inline-flex;
+  gap: var(--spacing-xs);
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.badge-mini {
+  background-color: var(--mini-badge-bg);
+  color: var(--mini-badge-text);
+}
+
+.badge-main {
+  background-color: var(--main-badge-bg);
+  color: var(--main-badge-text);
+}
+
+.date-cell {
+  color: var(--text-light);
+}
+
+.prize-cell {
+  color: var(--text-light);
+}
+
+.main-prize-row {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: var(--spacing-md);
+}
+
+.main-prize-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  padding: var(--spacing-md);
+  align-items: center;
+}
+
+/* Main prize row specific styles */
+.main-prize-image-container {
+  margin: 0 var(--spacing-md) var(--spacing-md);
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  #main-container {
+    padding: var(--spacing-md);
+  }
+
+  .total-prize-card {
+    width: 350px;
+  }
+}
+
+@media (max-width: 992px) {
+  /* Adjust the grid layout for winners table */
+  .winners-header, .winner-row, .main-prize-info {
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Adjust the grid layout for winners table */
+  .winners-header, .winner-row, .main-prize-info {
+    grid-template-columns: 2fr 1fr 2fr;
+  }
+
+  /* Keep user, win type, and prize columns, hide country and date */
+  .header-cell.country-cell, .header-cell.date-cell {
+    display: none;
+  }
+
+  /* Hide country and date cells in rows */
+  .winner-row .country-cell, .winner-row .date-cell {
+    display: none;
+  }
+
+  /* Add country and date info to user cell */
+  .winner-row .user-cell {
+    position: relative;
+  }
+
+  .winner-row .user-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .winner-row .user-info::after {
+    content: attr(data-date) " • " attr(data-country);
+    display: block;
+    font-size: var(--font-size-sm);
+    color: var(--text-light);
+    margin-top: var(--spacing-xs);
+  }
+
+  /* Adjust main prize row */
+  .main-prize-info .country-cell, .main-prize-info .date-cell {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Single column layout for mobile */
+  .winners-header {
+    display: none;
+  }
+
+  .winner-row, .main-prize-info {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
+
+  .winner-cell {
+    padding: var(--spacing-xs) 0;
+  }
+
+  /* Show only the most important cells in mobile view */
+  .winner-row .user-cell, .winner-row .type-cell, .winner-row .prize-cell {
+    display: flex;
+  }
+
+  .winner-row .country-cell, .winner-row .date-cell {
+    display: none;
+  }
+
+  /* Style cells for mobile */
+  .win-badge {
+    font-size: var(--font-size-xs);
+  }
+
+  /* Adjust main prize */
+  .main-prize-info .user-cell, .main-prize-info .type-cell, .main-prize-info .prize-cell {
+    display: flex;
+  }
+
+  .main-prize-info .country-cell, .main-prize-info .date-cell {
+    display: none;
+  }
+
+  /* No carousel-specific styles needed here */
+
+  /* Adjust total prize */
+  .total-prize-card {
+    width: 100%;
+  }
+
+  .total-prize-heading {
+    font-size: var(--font-size-sm);
+  }
+
+  .total-prize-value {
+    font-size: var(--font-size-xl);
+  }
+
+  /* General adjustments */
+  #main-container {
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm);
+  }
+
+  .winners-heading {
+    font-size: var(--font-size-lg);
+  }
+}

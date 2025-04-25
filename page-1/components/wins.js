@@ -106,45 +106,19 @@ function createMainPrizeCard(win) {
   const card = document.createElement("div");
   card.className = "main-prize-card card";
 
-  const imageContainer = document.createElement("div");
-  imageContainer.className = "main-prize-image-container";
-
-  const badge = document.createElement("span");
-  badge.className = "win-badge badge-main main-prize-badge";
-  badge.innerHTML = '<i class="fa-solid fa-trophy"></i> Main Prize';
-  imageContainer.appendChild(badge);
-
-  const prevButton = document.createElement("div");
-  prevButton.className = "main-prize-nav nav-prev";
-  prevButton.innerHTML = '<i class="fa-solid fa-chevron-left"></i>';
-  imageContainer.appendChild(prevButton);
-
-  const nextButton = document.createElement("div");
-  nextButton.className = "main-prize-nav nav-next";
-  nextButton.innerHTML = '<i class="fa-solid fa-chevron-right"></i>';
-  imageContainer.appendChild(nextButton);
-
-  win.images.forEach((imgSrc, index) => {
-    const img = document.createElement("img");
-    img.className = "main-prize-image";
-    img.src = imgSrc;
-    img.alt = `${win.title} - Image ${index + 1}`;
-    img.style.display = index === 0 ? "block" : "none";
-    img.dataset.index = index;
-    imageContainer.appendChild(img);
+  // Use the shared carousel component
+  const imageContainer = createCarousel({
+    images: win.images,
+    altText: win.title,
+    showBadge: true,
+    badgeText: 'Main Prize',
+    badgeIcon: 'fa-solid fa-trophy',
+    badgeClass: 'badge-main'
   });
 
-  const dotsContainer = document.createElement("div");
-  dotsContainer.className = "main-prize-dots";
+  // Add the carousel-specific class for styling
+  imageContainer.classList.add('main-prize-image-container');
 
-  win.images.forEach((_, index) => {
-    const dot = document.createElement("div");
-    dot.className = `dot ${index === 0 ? "active" : ""}`;
-    dot.dataset.index = index;
-    dotsContainer.appendChild(dot);
-  });
-
-  imageContainer.appendChild(dotsContainer);
   card.appendChild(imageContainer);
 
   const infoSection = document.createElement("div");
@@ -170,36 +144,6 @@ function createMainPrizeCard(win) {
   infoSection.appendChild(dateContainer);
 
   card.appendChild(infoSection);
-
-  let currentIndex = 0;
-  const images = imageContainer.querySelectorAll(".main-prize-image");
-  const dots = dotsContainer.querySelectorAll(".dot");
-
-  function showImage(index) {
-    images.forEach((img) => (img.style.display = "none"));
-    dots.forEach((dot) => dot.classList.remove("active"));
-
-    images[index].style.display = "block";
-    dots[index].classList.add("active");
-    currentIndex = index;
-  }
-
-  prevButton.addEventListener("click", () => {
-    const newIndex = (currentIndex - 1 + images.length) % images.length;
-    showImage(newIndex);
-  });
-
-  nextButton.addEventListener("click", () => {
-    const newIndex = (currentIndex + 1) % images.length;
-    showImage(newIndex);
-  });
-
-  dots.forEach((dot) => {
-    dot.addEventListener("click", () => {
-      const index = parseInt(dot.dataset.index);
-      showImage(index);
-    });
-  });
 
   return card;
 }

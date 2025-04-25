@@ -1,0 +1,239 @@
+function initWinnersSection({ container, data }) {
+  // Create heading
+  const heading = document.createElement("h2");
+  heading.className = "winners-heading";
+  heading.textContent = "All Winners";
+  container.appendChild(heading);
+
+  // Create winners table
+  const winnersTable = document.createElement("div");
+  winnersTable.className = "winners-table";
+
+  // Create header
+  const winnersHeader = document.createElement("div");
+  winnersHeader.className = "winners-header";
+
+  // Add header cells
+  const headerCells = [
+    { className: "user-cell", text: "User" },
+    { className: "country-cell", text: "Country" },
+    { className: "win-type-cell", text: "Win Type" },
+    { className: "date-cell", text: "Date" },
+    { className: "prize-cell", text: "Prize Won" }
+  ];
+
+  headerCells.forEach(cell => {
+    const headerCell = document.createElement("div");
+    headerCell.className = `header-cell ${cell.className}`;
+    headerCell.textContent = cell.text;
+    winnersHeader.appendChild(headerCell);
+  });
+
+  winnersTable.appendChild(winnersHeader);
+
+  // Create winners list container
+  const winnersList = document.createElement("div");
+  winnersList.id = "winners-list";
+  winnersTable.appendChild(winnersList);
+
+  // Add table to main container
+  container.appendChild(winnersTable);
+
+  // Load winners into the list
+  loadWinners({
+    container: winnersList,
+    data: data
+  });
+}
+
+function loadWinners({ container, data }) {
+  const sortedData = [...data].sort(
+    (a, b) => new Date(b.date) - new Date(a.date),
+  );
+
+  sortedData.forEach((winner) => {
+    let winnerRow;
+
+    if (winner.type === "main") {
+      winnerRow = createMainPrizeRow(winner);
+    } else {
+      winnerRow = createRegularWinnerRow(winner);
+    }
+
+    container.appendChild(winnerRow);
+  });
+}
+
+function formatDate(date) {
+  return new Date(date).toLocaleDateString("en-US", {
+    month: "numeric",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
+function createRegularWinnerRow(winner) {
+  const row = document.createElement("div");
+  row.className = "winner-row card";
+
+  // User cell
+  const userCell = document.createElement("div");
+  userCell.className = "winner-cell user-cell";
+  userCell.setAttribute("data-label", "User");
+
+  const userInfo = document.createElement("div");
+  userInfo.className = "user-info";
+  userInfo.setAttribute("data-date", formatDate(winner.date));
+  userInfo.setAttribute("data-prize", winner.prize);
+  userInfo.setAttribute("data-country", `${winner.country} ${winner.flag}`);
+
+  const userPhoto = document.createElement("img");
+  userPhoto.className = "user-photo";
+  userPhoto.src = winner.photo;
+  userPhoto.alt = `${winner.name}'s photo`;
+  userInfo.appendChild(userPhoto);
+
+  const userName = document.createElement("div");
+  userName.className = "user-name";
+  userName.textContent = winner.name;
+  userInfo.appendChild(userName);
+
+  userCell.appendChild(userInfo);
+  row.appendChild(userCell);
+
+  // Country cell
+  const countryCell = document.createElement("div");
+  countryCell.className = "winner-cell country-cell";
+  countryCell.setAttribute("data-label", "Country");
+
+  const countryInfo = document.createElement("div");
+  countryInfo.className = "country-info";
+  countryInfo.innerHTML = `<span>${winner.country}</span> ${winner.flag}`;
+
+  countryCell.appendChild(countryInfo);
+  row.appendChild(countryCell);
+
+  // Win Type cell
+  const typeCell = document.createElement("div");
+  typeCell.className = "winner-cell type-cell";
+  typeCell.setAttribute("data-label", "Win Type");
+
+  if (winner.type === "mini") {
+    const badge = document.createElement("span");
+    badge.className = "win-badge badge-mini";
+    badge.innerHTML = '<i class="fa-solid fa-gift"></i> Mini Prize';
+    typeCell.appendChild(badge);
+  } else {
+    typeCell.textContent = "Incentive Prize";
+    typeCell.style.color = "var(--text-light)";
+  }
+
+  row.appendChild(typeCell);
+
+  // Date cell
+  const dateCell = document.createElement("div");
+  dateCell.className = "winner-cell date-cell";
+  dateCell.setAttribute("data-label", "Date");
+  dateCell.textContent = formatDate(winner.date);
+  row.appendChild(dateCell);
+
+  // Prize cell
+  const prizeCell = document.createElement("div");
+  prizeCell.className = "winner-cell prize-cell";
+  prizeCell.setAttribute("data-label", "Prize Won");
+  prizeCell.textContent = winner.prize;
+  row.appendChild(prizeCell);
+
+  return row;
+}
+
+function createMainPrizeRow(winner) {
+  const row = document.createElement("div");
+  row.className = "main-prize-row card";
+
+  // Main prize info section
+  const infoSection = document.createElement("div");
+  infoSection.className = "main-prize-info";
+
+  // User cell
+  const userCell = document.createElement("div");
+  userCell.className = "winner-cell user-cell";
+  userCell.setAttribute("data-label", "User");
+
+  const userInfo = document.createElement("div");
+  userInfo.className = "user-info";
+  userInfo.setAttribute("data-date", formatDate(winner.date));
+  userInfo.setAttribute("data-prize", winner.prize);
+  userInfo.setAttribute("data-country", `${winner.country} ${winner.flag}`);
+
+  const userPhoto = document.createElement("img");
+  userPhoto.className = "user-photo";
+  userPhoto.src = winner.photo;
+  userPhoto.alt = `${winner.name}'s photo`;
+  userInfo.appendChild(userPhoto);
+
+  const userName = document.createElement("div");
+  userName.className = "user-name";
+  userName.textContent = winner.name;
+  userInfo.appendChild(userName);
+
+  userCell.appendChild(userInfo);
+  infoSection.appendChild(userCell);
+
+  // Country cell
+  const countryCell = document.createElement("div");
+  countryCell.className = "winner-cell country-cell";
+  countryCell.setAttribute("data-label", "Country");
+
+  const countryInfo = document.createElement("div");
+  countryInfo.className = "country-info";
+  countryInfo.innerHTML = `<span>${winner.country}</span> ${winner.flag}`;
+
+  countryCell.appendChild(countryInfo);
+  infoSection.appendChild(countryCell);
+
+  // Win Type cell
+  const typeCell = document.createElement("div");
+  typeCell.className = "winner-cell type-cell";
+  typeCell.setAttribute("data-label", "Win Type");
+
+  const badge = document.createElement("span");
+  badge.className = "win-badge badge-main";
+  badge.innerHTML = '<i class="fa-solid fa-trophy"></i> Main Prize';
+  typeCell.appendChild(badge);
+
+  infoSection.appendChild(typeCell);
+
+  // Date cell
+  const dateCell = document.createElement("div");
+  dateCell.className = "winner-cell date-cell";
+  dateCell.setAttribute("data-label", "Date");
+  dateCell.textContent = formatDate(winner.date);
+  infoSection.appendChild(dateCell);
+
+  // Prize cell
+  const prizeCell = document.createElement("div");
+  prizeCell.className = "winner-cell prize-cell";
+  prizeCell.setAttribute("data-label", "Prize Won");
+  prizeCell.textContent = winner.prize;
+  infoSection.appendChild(prizeCell);
+
+  row.appendChild(infoSection);
+
+  // Use the shared carousel component
+  const imageContainer = createCarousel({
+    images: winner.images,
+    altText: winner.prize,
+    showBadge: true,
+    badgeText: 'Main Prize',
+    badgeIcon: 'fa-solid fa-trophy',
+    badgeClass: 'badge-main'
+  });
+
+  // Add the carousel-specific class for styling
+  imageContainer.classList.add('main-prize-image-container');
+
+  row.appendChild(imageContainer);
+
+  return row;
+}
