@@ -1,6 +1,4 @@
-/**
- * Creates an image carousel with navigation and indicators
- */
+// Creates an image carousel with navigation and indicators
 function createCarousel({
   container,
   images,
@@ -33,11 +31,25 @@ function createCarousel({
   imageContainer.appendChild(nextButton);
   images.forEach((imgSrc, index) => {
     const img = document.createElement("img");
-    img.className = "carousel-image";
+
+    if (index === 0) {
+      img.className = "carousel-image active";
+    } else if (index > 0) {
+      img.className = "carousel-image next";
+    } else {
+      img.className = "carousel-image prev";
+    }
+
     img.src = imgSrc;
     img.alt = `${altText} - ${index + 1}`;
-    img.style.display = index === 0 ? "block" : "none";
     img.dataset.index = index;
+
+    img.onload = function() {
+      if (index === 0) {
+        img.style.opacity = "1";
+      }
+    };
+
     imageContainer.appendChild(img);
   });
 
@@ -61,29 +73,92 @@ function createCarousel({
   const carouselImages = imageContainer.querySelectorAll(".carousel-image");
   const dots = dotsContainer.querySelectorAll(".dot");
 
-  function showImage(index) {
-    carouselImages.forEach((img) => (img.style.display = "none"));
-    dots.forEach((dot) => dot.classList.remove("active"));
+  function showImage(index, direction = null) {
+    if (index === currentIndex) return;
 
-    carouselImages[index].style.display = "block";
+    dots.forEach((dot) => dot.classList.remove("active"));
     dots[index].classList.add("active");
+
+    if (direction) {
+      const newImage = carouselImages[index];
+      const currentImage = carouselImages[currentIndex];
+
+      newImage.classList.remove('slide-in-from-left', 'slide-in-from-right', 'slide-out-to-left', 'slide-out-to-right', 'prev', 'next');
+
+      if (direction === 'next') {
+        newImage.classList.add('next');
+      } else if (direction === 'prev') {
+        newImage.classList.add('prev');
+      }
+
+      // Force a reflow to ensure the browser recognizes the position change
+      void newImage.offsetWidth;
+
+      if (direction === 'next') {
+        newImage.classList.add('active');
+        currentImage.classList.add('slide-out-to-left');
+        newImage.classList.add('slide-in-from-right');
+      } else if (direction === 'prev') {
+        newImage.classList.add('active');
+        currentImage.classList.add('slide-out-to-right');
+        newImage.classList.add('slide-in-from-left');
+      }
+
+      setTimeout(() => {
+        carouselImages.forEach((img) => {
+          img.classList.remove('slide-in-from-left', 'slide-in-from-right', 'slide-out-to-left', 'slide-out-to-right');
+
+          const imgIndex = parseInt(img.dataset.index);
+          img.classList.remove('active', 'prev', 'next');
+
+          if (imgIndex === index) {
+            img.classList.add('active');
+          } else if (imgIndex < index) {
+            img.classList.add('prev');
+          } else {
+            img.classList.add('next');
+          }
+        });
+      }, 400);
+    } else {
+      carouselImages.forEach((img) => {
+        img.classList.remove('active', 'prev', 'next', 'slide-in-from-left', 'slide-in-from-right', 'slide-out-to-left', 'slide-out-to-right');
+
+        const imgIndex = parseInt(img.dataset.index);
+        if (imgIndex === index) {
+          img.classList.add('active');
+        } else if (imgIndex < index) {
+          img.classList.add('prev');
+        } else {
+          img.classList.add('next');
+        }
+      });
+    }
+
     currentIndex = index;
   }
 
   prevButton.addEventListener("click", () => {
     const newIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length;
-    showImage(newIndex);
+    showImage(newIndex, 'prev');
   });
 
   nextButton.addEventListener("click", () => {
     const newIndex = (currentIndex + 1) % carouselImages.length;
-    showImage(newIndex);
+    showImage(newIndex, 'next');
   });
 
   dots.forEach((dot) => {
     dot.addEventListener("click", () => {
       const index = parseInt(dot.dataset.index);
-      showImage(index);
+      // Determine direction based on index
+      let direction = null;
+      if (index > currentIndex) {
+        direction = 'next';
+      } else if (index < currentIndex) {
+        direction = 'prev';
+      }
+      showImage(index, direction);
     });
   });
 

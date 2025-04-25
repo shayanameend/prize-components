@@ -1,4 +1,4 @@
-/* Carousel Styles */
+
 .carousel-image-container {
   position: relative;
   height: 350px;
@@ -8,16 +8,81 @@
 }
 
 .carousel-image {
+  position: absolute;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  z-index: 0;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transition: opacity 0.1s ease;
+}
+
+.carousel-image.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.carousel-image.prev {
+  transform: translate3d(-100%, 0, 0);
+}
+
+.carousel-image.next {
+  transform: translate3d(100%, 0, 0);
+}
+
+.carousel-image.slide-in-from-right {
+  animation: slideInFromRight 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  z-index: 2;
+}
+
+.carousel-image.slide-in-from-left {
+  animation: slideInFromLeft 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  z-index: 2;
+}
+
+.carousel-image.slide-out-to-left {
+  animation: slideOutToLeft 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  z-index: 1;
+}
+
+.carousel-image.slide-out-to-right {
+  animation: slideOutToRight 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  z-index: 1;
+}
+
+@keyframes slideInFromRight {
+  0% { transform: translate3d(100%, 0, 0); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translate3d(0, 0, 0); opacity: 1; }
+}
+
+@keyframes slideInFromLeft {
+  0% { transform: translate3d(-100%, 0, 0); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translate3d(0, 0, 0); opacity: 1; }
+}
+
+@keyframes slideOutToLeft {
+  0% { transform: translate3d(0, 0, 0); opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translate3d(-100%, 0, 0); opacity: 0; }
+}
+
+@keyframes slideOutToRight {
+  0% { transform: translate3d(0, 0, 0); opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translate3d(100%, 0, 0); opacity: 0; }
 }
 
 .carousel-badge {
   position: absolute;
   top: var(--spacing-md);
   left: var(--spacing-md);
-  z-index: 1;
+  z-index: 10;
   display: inline-flex;
   gap: var(--spacing-xs);
   align-items: center;
@@ -25,6 +90,7 @@
   border-radius: var(--border-radius-sm);
   font-size: var(--font-size-sm);
   font-weight: 500;
+  pointer-events: none;
 }
 
 .carousel-nav {
@@ -39,7 +105,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 1;
+  z-index: 5;
 }
 
 .nav-prev {
@@ -57,7 +123,7 @@
   transform: translateX(-50%);
   display: flex;
   gap: var(--spacing-xs);
-  z-index: 1;
+  z-index: 5;
 }
 
 .dot {
@@ -89,7 +155,7 @@
   .carousel-image-container {
     height: 200px;
   }
-  
+
   .carousel-nav {
     width: 32px;
     height: 32px;
