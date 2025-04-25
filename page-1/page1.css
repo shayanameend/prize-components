@@ -250,7 +250,7 @@
     padding: var(--spacing-sm) var(--spacing-md) var(--spacing-md);
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .main-prize-title {
@@ -267,9 +267,10 @@
 }
 
 .main-prize-date {
-    color: var(--text-light);
+    color: var(--text-primary);
     font-size: var(--font-size-sm);
     text-align: right;
+    font-weight: 600;
 }
 
 /* Responsive design */

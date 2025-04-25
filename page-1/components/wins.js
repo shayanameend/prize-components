@@ -20,7 +20,14 @@ function loadWins({
 }
 
 // Helper function to format date
-function formatDate(date) {
+function formatDate(date, longFormat = false) {
+    if (longFormat) {
+        return new Date(date).toLocaleDateString('en-US', {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric'
+        });
+    }
     return new Date(date).toLocaleDateString('en-US', {
         month: 'numeric',
         day: 'numeric',
@@ -177,7 +184,7 @@ function createMainPrizeCard(win) {
     // Right side - date
     const dateContainer = document.createElement('div');
     dateContainer.className = 'main-prize-date';
-    dateContainer.textContent = `Selected ${formatDate(win.date)}`;
+    dateContainer.textContent = `Selected ${formatDate(win.date, true)}`;
     infoSection.appendChild(dateContainer);
 
     card.appendChild(infoSection);
