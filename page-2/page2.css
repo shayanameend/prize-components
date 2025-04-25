@@ -33,6 +33,23 @@
 .total-prize-value {
   font-size: var(--font-size-xxxl);
   font-weight: 500;
+  position: relative;
+  min-height: 4.5rem; /* Prevent layout shift during animation */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.02); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.total-prize-value.animating {
+  animation: pulse 1s infinite ease-in-out;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
 }
 
 #winners-container {
