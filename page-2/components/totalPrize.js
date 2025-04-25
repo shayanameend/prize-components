@@ -14,10 +14,8 @@ function loadTotalPrize({ container, value }) {
 
   container.appendChild(totalPrizeCard);
 
-  setTimeout(() => {
-    const startValue = Math.min(value * 0.01, 1000);
-    animateCountUp(totalPrizeValue, startValue, value);
-  }, 300);
+  const startValue = 0;
+  animateCountUp(totalPrizeValue, startValue, value);
 }
 
 function formatCentsToDollars(cents) {
@@ -32,31 +30,24 @@ function formatCentsToDollars(cents) {
   return formatted + " USD";
 }
 
-function animateCountUp(element, startValue, endValue, duration = 2500) {
+function animateCountUp(element, startValue, endValue, duration = 2000) {
   const startTime = performance.now();
   const difference = endValue - startValue;
 
-  element.classList.add('animating');
+  function updateCount(currentTime) {
+    const elapsedTime = currentTime - startTime;
 
-  setTimeout(() => {
-    function updateCount(currentTime) {
-      const elapsedTime = currentTime - startTime;
-
-      if (elapsedTime < duration) {
-        const progress = easeOutExpo(elapsedTime / duration);
-        const currentValue = Math.floor(startValue + (difference * progress));
-        element.textContent = formatCentsToDollars(currentValue);
-        requestAnimationFrame(updateCount);
-      } else {
-        element.textContent = formatCentsToDollars(endValue);
-        setTimeout(() => {
-          element.classList.remove('animating');
-        }, 300);
-      }
+    if (elapsedTime < duration) {
+      const progress = easeOutExpo(elapsedTime / duration);
+      const currentValue = Math.floor(startValue + (difference * progress));
+      element.textContent = formatCentsToDollars(currentValue);
+      requestAnimationFrame(updateCount);
+    } else {
+      element.textContent = formatCentsToDollars(endValue);
     }
+  }
 
-    requestAnimationFrame(updateCount);
-  }, 500);
+  requestAnimationFrame(updateCount);
 }
 
 function easeOutExpo(x) {
