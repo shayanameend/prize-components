@@ -1,11 +1,10 @@
 #main-container {
   display: grid;
-  gap: 36px;
   grid-template-columns: 250px 1fr;
-  margin: 0 auto;
+  gap: var(--spacing-xl);
   max-width: 1024px;
-  padding: var(--spacing-md);
-  box-sizing: border-box;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
 }
 
 #profile-container {
@@ -104,12 +103,14 @@
 
 .win-card {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 80px;
+  grid-template-columns: 1fr 1fr 1fr 120px; /* Increase image column width */
   align-items: center;
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: var(--spacing-xs) var(--spacing-lg); /* Reduced vertical padding */
   gap: var(--spacing-md);
   box-sizing: border-box;
   min-width: 0; /* Prevent grid items from overflowing */
+  position: relative; /* Ensure proper positioning context for dividers */
+  min-height: 90px; /* Slightly reduced minimum height */
 }
 
 .win-type,
@@ -120,7 +121,7 @@
   gap: var(--spacing-xs);
   position: relative;
   min-width: 0; /* Prevent overflow */
-  overflow: hidden; /* Prevent text overflow */
+  /* Remove overflow: hidden to ensure dividers are visible */
 }
 
 .win-date::before,
@@ -132,6 +133,7 @@
   height: 100%;
   width: 1px;
   background-color: var(--border-color);
+  z-index: 1; /* Ensure dividers appear above content */
 }
 
 .win-label {
@@ -144,6 +146,9 @@
   font-size: var(--font-size-md);
   color: var(--text-light);
   font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Badge styles moved to shared/components/badges.css */
@@ -152,13 +157,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 80px; /* Set height */
+  width: 100%; /* Full width of the column */
+  aspect-ratio: 4/3; /* Landscape aspect ratio but not too wide */
+  overflow: hidden; /* Prevent image overflow */
+  border-radius: var(--border-radius-sm);
+  margin: 6px 0; /* Reduced vertical margin */
 }
 
 .win-image {
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  object-fit: cover; /* Cover the container while maintaining aspect ratio */
   border-radius: var(--border-radius-sm);
+  object-position: center; /* Center the image */
 }
 
 .main-prize-card {
@@ -213,7 +225,7 @@
 
 /* Responsive Styles */
 /* Small screens (mobile) */
-@media (max-width: 480px) {
+@media (min-width: 0px) and (max-width: 480px) {
   #main-container {
     grid-template-columns: 1fr; /* Single column layout */
     gap: var(--spacing-lg); /* Adjust gap for mobile */
@@ -225,9 +237,10 @@
   }
 
   .win-card {
-    padding: var(--spacing-xs) var(--spacing-sm);
+    padding: var(--spacing-xxs) var(--spacing-md); /* Further reduced vertical padding */
     gap: var(--spacing-xs);
-    grid-template-columns: 1fr 1fr 1fr 60px; /* Reduce image column width */
+    grid-template-columns: 1fr 1fr 1fr 80px; /* Maintain wider image column */
+    min-height: 70px; /* Reduced minimum height for small screens */
   }
 
   .win-label {
@@ -236,27 +249,34 @@
   }
 
   .win-value {
-    font-size: var(--font-size-xs); /* Aggressively reduce value font size */
+    font-size: var(
+      --font-size-xxs
+    ); /* Extra small font size for cell content */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    line-height: 1.2; /* Tighter line height */
   }
 
   /* Make badge more compact */
   .win-badge {
     padding: 0 var(--spacing-xs);
     gap: var(--spacing-xxs);
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-xxs); /* Extra small font size for badge */
   }
 
   .win-date::before,
   .win-prize::before {
     left: -10px; /* Reduce separator spacing */
+    width: 1px; /* Ensure divider is visible */
+    display: block !important; /* Force display */
   }
 
   .win-image-container {
-    width: 60px; /* Reduce image container width */
-    height: 60px; /* Reduce image container height */
+    width: 80px; /* Maintain wider image container */
+    height: 60px; /* Height for landscape aspect ratio */
+    aspect-ratio: 4/3; /* Landscape aspect ratio but not too wide */
+    margin: 4px 0; /* Reduced vertical margin for small screens */
   }
 
   .main-prize-card {
@@ -286,9 +306,10 @@
   }
 
   .win-card {
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: var(--spacing-xs) var(--spacing-md); /* Reduced vertical padding */
     gap: var(--spacing-sm);
-    grid-template-columns: 1fr 1fr 1fr 70px; /* Slightly reduce image column width */
+    grid-template-columns: 1fr 1fr 1fr 100px; /* Wider image column for tablets */
+    min-height: 80px; /* Reduced minimum height for medium screens */
   }
 
   .win-label {
@@ -313,24 +334,36 @@
   .win-date::before,
   .win-prize::before {
     left: -15px; /* Reduce separator spacing */
+    width: 1px; /* Ensure divider is visible */
+    display: block !important; /* Force display */
   }
 
   .win-image-container {
-    width: 70px; /* Reduce image container width */
-    height: 70px; /* Reduce image container height */
+    width: 100px; /* Wider image container for tablets */
+    height: 75px; /* Height for landscape aspect ratio */
+    aspect-ratio: 4/3; /* Landscape aspect ratio but not too wide */
+    margin: 5px 0; /* Reduced vertical margin for medium screens */
   }
 }
 
 /* Large screens (desktops) */
 @media (min-width: 769px) and (max-width: 1024px) {
   #main-container {
-    padding: var(--spacing-lg); /* Larger padding for desktops */
+    padding: var(--spacing-xl); /* Larger padding for desktops */
   }
 
   .win-card {
-    padding: var(--spacing-md) var(--spacing-lg);
+    padding: var(--spacing-xs) var(--spacing-lg); /* Reduced vertical padding */
     gap: var(--spacing-md);
-    grid-template-columns: 1fr 1fr 1fr 80px; /* Standard image column width */
+    grid-template-columns: 1fr 1fr 1fr 120px; /* Wider image column for desktops */
+    min-height: 85px; /* Reduced minimum height for large screens */
+  }
+
+  /* Ensure image container maintains landscape aspect ratio */
+  .win-image-container {
+    height: 90px; /* Height for landscape aspect ratio */
+    aspect-ratio: 4/3; /* Landscape aspect ratio but not too wide */
+    margin: 6px 0; /* Reduced vertical margin */
   }
 
   .win-label {
@@ -343,12 +376,37 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
+  /* Ensure dividers are visible */
+  .win-date::before,
+  .win-prize::before {
+    left: -20px; /* Standard separator spacing */
+    display: block; /* Ensure display */
+  }
 }
 
 /* Extra large screens */
 @media (min-width: 1025px) {
   #main-container {
     padding: var(--spacing-xl); /* Extra large padding for large screens */
+  }
+
+  /* Ensure image container has landscape aspect ratio */
+  .win-image-container {
+    height: 105px; /* Height for landscape aspect ratio */
+    aspect-ratio: 4/3; /* Landscape aspect ratio but not too wide */
+    margin: 8px 0; /* Reduced vertical margin for extra large screens */
+  }
+
+  .win-card {
+    grid-template-columns: 1fr 1fr 1fr 140px; /* Even wider image column for large screens */
+  }
+
+  /* Ensure dividers are visible */
+  .win-date::before,
+  .win-prize::before {
+    left: -20px; /* Standard separator spacing */
+    display: block; /* Ensure display */
   }
 }
 
@@ -461,12 +519,6 @@
     font-size: var(--font-size-md); /* Adjust icon size if needed */
   }
 
-  /* Adjust win card layout for mobile - maintain grid layout but reduce sizes */
-  .win-card {
-    padding: var(--spacing-sm) var(--spacing-md);
-    gap: var(--spacing-sm);
-  }
-
   .main-prize-card {
     padding: var(--spacing-md);
     gap: var(--spacing-sm);
@@ -477,6 +529,7 @@
   .win-date,
   .win-prize {
     max-width: 100%;
+    position: relative; /* Ensure position is set for dividers */
   }
 
   /* Add ellipsis for overflowing text */
@@ -485,5 +538,12 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    /* Font size is set in specific media queries */
+  }
+
+  /* Ensure dividers are visible */
+  .win-date::before,
+  .win-prize::before {
+    display: block !important; /* Force display of dividers */
   }
 }
