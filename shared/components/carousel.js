@@ -9,7 +9,7 @@ function createCarousel({
   badgeClass = "",
 }) {
   const imageContainer = document.createElement("div");
-  imageContainer.className = "carousel-image-container";
+  imageContainer.className = "carousel-image-container responsive-carousel";
 
   // Badge
   if (showBadge) {
@@ -49,6 +49,19 @@ function createCarousel({
     img.onload = function () {
       if (index === 0) {
         img.style.opacity = "1";
+      }
+
+      // Calculate and store the natural aspect ratio of the image
+      const aspectRatio = this.naturalWidth / this.naturalHeight;
+      img.dataset.aspectRatio = aspectRatio.toFixed(2);
+
+      // Add class based on image orientation
+      if (aspectRatio > 1.2) {
+        img.classList.add("landscape");
+      } else if (aspectRatio < 0.8) {
+        img.classList.add("portrait");
+      } else {
+        img.classList.add("square");
       }
     };
 
@@ -91,7 +104,7 @@ function createCarousel({
         "slide-out-to-left",
         "slide-out-to-right",
         "prev",
-        "next",
+        "next"
       );
 
       if (direction === "next") {
@@ -119,7 +132,7 @@ function createCarousel({
             "slide-in-from-left",
             "slide-in-from-right",
             "slide-out-to-left",
-            "slide-out-to-right",
+            "slide-out-to-right"
           );
 
           const imgIndex = parseInt(img.dataset.index);
@@ -143,7 +156,7 @@ function createCarousel({
           "slide-in-from-left",
           "slide-in-from-right",
           "slide-out-to-left",
-          "slide-out-to-right",
+          "slide-out-to-right"
         );
 
         const imgIndex = parseInt(img.dataset.index);
@@ -158,6 +171,15 @@ function createCarousel({
     }
 
     currentIndex = index;
+
+    // Update aspect ratio based on the new active image
+    const activeImage = carouselImages[index];
+    if (activeImage && activeImage.dataset.aspectRatio) {
+      // Call the resize handler to adjust the container aspect ratio
+      if (typeof handleResize === "function") {
+        handleResize();
+      }
+    }
   }
 
   prevButton.addEventListener("click", () => {
@@ -184,6 +206,95 @@ function createCarousel({
       showImage(index, direction);
     });
   });
+
+  // Handle window resize for better responsive behavior
+  const handleResize = () => {
+    // Get the current active image
+    const activeImage = imageContainer.querySelector(".carousel-image.active");
+    if (activeImage && activeImage.dataset.aspectRatio) {
+      const aspectRatio = parseFloat(activeImage.dataset.aspectRatio);
+
+      // Adjust container aspect ratio based on screen width and image orientation
+      if (window.innerWidth <= 360) {
+        // Very small mobile screens - use 4:3 for all images
+        imageContainer.style.aspectRatio = "4 / 3";
+      } else if (window.innerWidth <= 480) {
+        // Mobile view - maintain 16:9 for better viewing
+        imageContainer.style.aspectRatio = "16 / 9";
+      } else if (window.innerWidth <= 768) {
+        // Tablet view - adjust based on image orientation
+        if (aspectRatio > 1.2) {
+          // Landscape
+          imageContainer.style.aspectRatio = "16 / 9";
+        } else if (aspectRatio < 0.8) {
+          // Portrait
+          imageContainer.style.aspectRatio = "4 / 3";
+        } else {
+          // Square-ish
+          imageContainer.style.aspectRatio = "4 / 3";
+        }
+      } else {
+        // Desktop view - closer to original aspect ratio
+        if (aspectRatio > 1.5) {
+          // Very wide landscape
+          imageContainer.style.aspectRatio = "16 / 9";
+        } else if (aspectRatio > 1) {
+          // Moderate landscape
+          imageContainer.style.aspectRatio = "16 / 10";
+        } else if (aspectRatio < 0.7) {
+          // Tall portrait
+          imageContainer.style.aspectRatio = "4 / 3";
+        } else {
+          // Square-ish or moderate portrait
+          imageContainer.style.aspectRatio = "4 / 3";
+        }
+      }
+    }
+  };
+
+  // Initial resize handling
+  handleResize();
+
+  // Add resize event listener
+  window.addEventListener("resize", handleResize);
+
+  // Store the resize handler reference for potential cleanup
+  imageContainer.resizeHandler = handleResize;
+
+  // Add touch support for mobile devices
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  imageContainer.addEventListener(
+    "touchstart",
+    (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    },
+    { passive: true }
+  );
+
+  imageContainer.addEventListener(
+    "touchend",
+    (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    },
+    { passive: true }
+  );
+
+  function handleSwipe() {
+    const swipeThreshold = 50; // Minimum distance required for a swipe
+    if (touchEndX < touchStartX - swipeThreshold) {
+      // Swipe left - show next image
+      const newIndex = (currentIndex + 1) % carouselImages.length;
+      showImage(newIndex, "next");
+    } else if (touchEndX > touchStartX + swipeThreshold) {
+      // Swipe right - show previous image
+      const newIndex =
+        (currentIndex - 1 + carouselImages.length) % carouselImages.length;
+      showImage(newIndex, "prev");
+    }
+  }
 
   return imageContainer;
 }

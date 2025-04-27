@@ -1,8 +1,11 @@
 .carousel-image-container {
   position: relative;
-  height: 350px;
+  width: 100%;
+  /* Use aspect-ratio instead of fixed height */
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: var(--border-radius-md);
+  max-height: 500px; /* Set a maximum height */
 }
 
 .carousel-image {
@@ -17,6 +20,29 @@
   will-change: transform, opacity;
   backface-visibility: hidden;
   transition: opacity 0.1s ease;
+}
+
+/* Specific styles for different image orientations */
+.carousel-image.landscape {
+  object-position: center; /* Default for landscape */
+  object-fit: cover; /* Cover the container */
+}
+
+.carousel-image.portrait {
+  object-position: center 25%; /* Focus on the upper part for portrait images */
+  object-fit: cover; /* Cover the container */
+}
+
+.carousel-image.square {
+  object-position: center; /* Center for square images */
+  object-fit: cover; /* Cover the container */
+}
+
+/* Ensure images maintain quality on high-DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .carousel-image {
+    image-rendering: -webkit-optimize-contrast; /* Improve image clarity on high-DPI screens */
+  }
 }
 
 .carousel-image.active {
@@ -178,4 +204,128 @@
 
 .carousel-nav i {
   color: white !important; /* Set Font Awesome icon color to white */
+}
+
+/* Responsive carousel container */
+.responsive-carousel {
+  width: 100%;
+  transition: aspect-ratio 0.3s ease;
+  margin: 0 auto; /* Center the carousel */
+  max-width: 100%; /* Ensure it doesn't overflow its container */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Container-specific responsive adjustments */
+.main-prize-card .carousel-image-container {
+  max-width: 100%; /* Ensure it fits in the card */
+  min-height: 200px; /* Ensure minimum height on small screens */
+}
+
+.main-prize-image-container {
+  width: 100%; /* Take full width of its container */
+  min-height: 200px; /* Ensure minimum height on small screens */
+}
+
+/* Ensure carousel maintains minimum dimensions */
+.carousel-image-container {
+  min-height: 200px; /* Minimum height on all screens */
+  min-width: 280px; /* Minimum width to prevent tiny carousels */
+}
+
+/* Responsive styles for different screen sizes */
+@media (max-width: 1024px) {
+  .carousel-image-container {
+    aspect-ratio: 16 / 10; /* Slightly taller on medium screens */
+    max-height: 450px;
+  }
+
+  /* Adjust object position for portrait images on medium screens */
+  .carousel-image.portrait {
+    object-position: center 20%; /* Show more of the middle part */
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-image-container {
+    aspect-ratio: 4 / 3; /* More square-like on tablets */
+    max-height: 400px;
+  }
+
+  .carousel-nav {
+    width: 28px; /* Smaller nav buttons on tablets */
+    height: 36px;
+  }
+
+  /* Adjust object position for landscape images on tablets */
+  .carousel-image.landscape {
+    object-position: center 30%; /* Focus more on the center-top area */
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-image-container {
+    aspect-ratio: 16 / 9; /* Maintain 16:9 aspect ratio on small screens */
+    max-height: 300px;
+  }
+
+  .carousel-nav {
+    width: 24px; /* Even smaller nav buttons on mobile */
+    height: 32px;
+    opacity: 0.7; /* Make nav buttons slightly transparent */
+  }
+
+  /* Make nav buttons more visible on hover/touch */
+  .carousel-nav:hover {
+    opacity: 1;
+  }
+
+  .carousel-badge {
+    font-size: var(--font-size-xs); /* Smaller badge text */
+    padding: 4px var(--spacing-sm);
+  }
+
+  .carousel-dots {
+    bottom: var(--spacing-sm); /* Move dots closer to bottom on mobile */
+  }
+
+  .dot {
+    width: 6px; /* Smaller dots on mobile */
+    height: 6px;
+  }
+
+  /* Further adjust object position for different orientations on mobile */
+  .carousel-image.landscape {
+    object-position: center 40%; /* Focus more on the top half on mobile */
+  }
+
+  .carousel-image.portrait {
+    object-position: center 30%; /* Show more of the top third on mobile */
+  }
+
+  /* Improve touch targets for mobile */
+  .carousel-nav,
+  .dot {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 360px) {
+  .carousel-image-container {
+    aspect-ratio: 16 / 10; /* Slightly taller on very small screens, but not square */
+    max-height: 250px;
+  }
+
+  .carousel-nav {
+    width: 20px; /* Even smaller nav buttons */
+    height: 28px;
+  }
+
+  /* Adjust badge position on very small screens */
+  .carousel-badge {
+    top: var(--spacing-xs);
+    left: var(--spacing-xs);
+    padding: 3px var(--spacing-sm);
+  }
 }

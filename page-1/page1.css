@@ -284,7 +284,7 @@
     flex-direction: row; /* Horizontal social links */
     justify-content: center; /* Center the icons */
     align-items: center; /* Align items vertically */
-    gap: 64px; /* Further increased gap between links */
+    gap: 48px; /* Further increased gap between links */
   }
 
   .social-media-mobile .social-link {
@@ -301,7 +301,7 @@
   .social-media-mobile .social-link:not(:last-child)::after {
     content: "";
     position: absolute;
-    right: -32px; /* Half of the new gap (64px / 2) */
+    right: -24px; /* Half of the new gap (48px / 2) */
     top: 50%;
     transform: translateY(-50%);
     height: 16px; /* Adjust height as needed */
