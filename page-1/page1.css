@@ -157,7 +157,7 @@
 .main-prize-card {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-md); /* Adjusted gap for better spacing */
   padding: var(--spacing-lg);
   border-radius: var(--border-radius-xl);
   overflow: hidden;
@@ -166,8 +166,9 @@
 /* Main prize card specific styles */
 .main-prize-info {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Keep this for title/subtitle alignment if needed */
   align-items: center;
+  /* No longer contains the date, so remove date-specific alignment if any */
 }
 
 .main-prize-title {
@@ -186,8 +187,10 @@
 .main-prize-date {
   color: var(--text-primary);
   font-size: var(--font-size-sm);
-  text-align: right;
+  text-align: center; /* Align date to the center */
   font-weight: 600;
+  /* Remove margin/padding adjustments if they were specific to the old position */
+  margin-top: var(--spacing-xs); /* Add some space above the date */
 }
 
 /* Default styles (Desktop) */

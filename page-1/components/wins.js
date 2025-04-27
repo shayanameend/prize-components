@@ -1,6 +1,6 @@
 function loadWins({ container, data }) {
   const sortedData = [...data].sort(
-    (a, b) => new Date(b.date) - new Date(a.date),
+    (a, b) => new Date(b.date) - new Date(a.date)
   );
 
   sortedData.forEach((win) => {
@@ -102,7 +102,10 @@ function createMainPrizeCard(win) {
 
   imageContainer.classList.add("main-prize-image-container");
 
-  card.appendChild(imageContainer);
+  // Create date container before info section
+  const dateContainer = document.createElement("div");
+  dateContainer.className = "main-prize-date";
+  dateContainer.textContent = `Selected ${formatDate(win.date, true)}`;
 
   const infoSection = document.createElement("div");
   infoSection.className = "main-prize-info";
@@ -121,12 +124,10 @@ function createMainPrizeCard(win) {
 
   infoSection.appendChild(titleContainer);
 
-  const dateContainer = document.createElement("div");
-  dateContainer.className = "main-prize-date";
-  dateContainer.textContent = `Selected ${formatDate(win.date, true)}`;
-  infoSection.appendChild(dateContainer);
-
-  card.appendChild(infoSection);
+  // Append elements in the new order: image, date, info
+  card.appendChild(imageContainer);
+  card.appendChild(dateContainer); // Append date after image
+  card.appendChild(infoSection); // Append info section last
 
   return card;
 }
