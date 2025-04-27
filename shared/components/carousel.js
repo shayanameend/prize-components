@@ -1,6 +1,5 @@
 // Creates an image carousel with navigation and indicators
 function createCarousel({
-  container,
   images,
   altText = "Image",
   showBadge = false,
@@ -34,12 +33,12 @@ function createCarousel({
   images.forEach((imgSrc, index) => {
     const img = document.createElement("img");
 
+    // Simplified initial class assignment
+    img.className = "carousel-image";
     if (index === 0) {
-      img.className = "carousel-image active";
-    } else if (index > 0) {
-      img.className = "carousel-image next";
+      img.classList.add("active");
     } else {
-      img.className = "carousel-image prev";
+      img.classList.add("next"); // All non-first images start as 'next'
     }
 
     img.src = imgSrc;
@@ -81,9 +80,6 @@ function createCarousel({
 
   imageContainer.appendChild(dotsContainer);
 
-  if (container) {
-    container.appendChild(imageContainer);
-  }
   let currentIndex = 0;
   const carouselImages = imageContainer.querySelectorAll(".carousel-image");
   const dots = dotsContainer.querySelectorAll(".dot");
@@ -176,9 +172,7 @@ function createCarousel({
     const activeImage = carouselImages[index];
     if (activeImage && activeImage.dataset.aspectRatio) {
       // Call the resize handler to adjust the container aspect ratio
-      if (typeof handleResize === "function") {
-        handleResize();
-      }
+      handleResize();
     }
   }
 
@@ -257,9 +251,6 @@ function createCarousel({
 
   // Add resize event listener
   window.addEventListener("resize", handleResize);
-
-  // Store the resize handler reference for potential cleanup
-  imageContainer.resizeHandler = handleResize;
 
   // Add touch support for mobile devices
   let touchStartX = 0;

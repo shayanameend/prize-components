@@ -219,13 +219,12 @@
 }
 
 .social-media-desktop {
-  /* Ensure desktop version is displayed as intended */
-  display: block; /* Or flex, depending on original desktop style */
+  display: block;
 }
 
 /* Responsive Styles */
 /* Small screens (mobile) */
-@media (min-width: 0px) and (max-width: 480px) {
+@media (max-width: 480px) {
   #main-container {
     grid-template-columns: 1fr; /* Single column layout */
     gap: var(--spacing-lg); /* Adjust gap for mobile */
@@ -260,7 +259,7 @@
 
   /* Make badge more compact */
   .win-badge {
-    padding: 0 var(--spacing-xs);
+    padding: var(--spacing-xxs) var(--spacing-xs);
     gap: var(--spacing-xxs);
     font-size: var(--font-size-xxs); /* Extra small font size for badge */
   }
@@ -269,7 +268,7 @@
   .win-prize::before {
     left: -10px; /* Reduce separator spacing */
     width: 1px; /* Ensure divider is visible */
-    display: block !important; /* Force display */
+    display: block; /* Removed !important */
   }
 
   .win-image-container {
@@ -335,7 +334,7 @@
   .win-prize::before {
     left: -15px; /* Reduce separator spacing */
     width: 1px; /* Ensure divider is visible */
-    display: block !important; /* Force display */
+    display: block; /* Removed !important */
   }
 
   .win-image-container {

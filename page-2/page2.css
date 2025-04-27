@@ -69,12 +69,6 @@
   color: var(--text-primary);
 }
 
-.header-cell.date-cell,
-.header-cell.prize-cell {
-  color: var(--text-primary);
-  font-weight: 600;
-}
-
 .winner-row {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -148,7 +142,7 @@
 
 /* Responsive Styles */
 /* Small screens (mobile) */
-@media (min-width: 0px) and (max-width: 480px) {
+@media (max-width: 480px) {
   #main-container {
     padding: 0; /* Remove padding */
     max-width: none; /* Remove max-width constraint */

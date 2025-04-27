@@ -66,9 +66,6 @@ function createRegularWinnerRow(winner) {
 
   const userInfo = document.createElement("div");
   userInfo.className = "user-info";
-  userInfo.setAttribute("data-date", formatDate(winner.date));
-  userInfo.setAttribute("data-prize", winner.prize);
-  userInfo.setAttribute("data-country", `${winner.country} ${winner.flag}`);
 
   const userPhoto = document.createElement("img");
   userPhoto.className = "user-photo";
@@ -157,9 +154,6 @@ function createMainPrizeRow(winner) {
 
   const userInfo = document.createElement("div");
   userInfo.className = "user-info main-prize-user-info"; // Keep main prize structure
-  userInfo.setAttribute("data-date", formatDate(winner.date));
-  userInfo.setAttribute("data-prize", winner.prize);
-  userInfo.setAttribute("data-country", `${winner.country} ${winner.flag}`);
 
   const userPhoto = document.createElement("img");
   userPhoto.className = "user-photo";
