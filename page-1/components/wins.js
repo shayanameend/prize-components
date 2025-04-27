@@ -99,7 +99,6 @@ function createMainPrizeCard(win) {
 
   imageContainer.classList.add("main-prize-image-container");
 
-  // Create date container before info section
   const dateContainer = document.createElement("div");
   dateContainer.className = "main-prize-date";
   dateContainer.textContent = `Selected ${formatDate(win.date, true)}`;
@@ -121,10 +120,9 @@ function createMainPrizeCard(win) {
 
   infoSection.appendChild(titleContainer);
 
-  // Append elements in the new order: image, date, info
   card.appendChild(imageContainer);
-  card.appendChild(dateContainer); // Append date after image
-  card.appendChild(infoSection); // Append info section last
+  card.appendChild(dateContainer);
+  card.appendChild(infoSection);
 
   return card;
 }

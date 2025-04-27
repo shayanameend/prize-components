@@ -11,20 +11,20 @@ function loadProfile({ container, name, photo, country, flag, socialMedia }) {
   profilePhoto.alt = `${name}'s profile photo`;
   profileContent.appendChild(profilePhoto);
 
-  const profileTextInfo = document.createElement("div"); // New container
-  profileTextInfo.className = "profile-text-info"; // New class
+  const profileTextInfo = document.createElement("div");
+  profileTextInfo.className = "profile-text-info";
 
   const profileName = document.createElement("h2");
   profileName.className = "profile-name";
   profileName.textContent = name;
-  profileTextInfo.appendChild(profileName); // Append name to new container
+  profileTextInfo.appendChild(profileName);
 
   const profileCountry = document.createElement("div");
   profileCountry.className = "profile-country";
   profileCountry.innerHTML = `<span>${country}</span> ${flag}`;
-  profileTextInfo.appendChild(profileCountry); // Append country to new container
+  profileTextInfo.appendChild(profileCountry);
 
-  profileContent.appendChild(profileTextInfo); // Append new container to content
+  profileContent.appendChild(profileTextInfo);
 
   profileCard.appendChild(profileContent);
 
@@ -74,20 +74,13 @@ function loadProfile({ container, name, photo, country, flag, socialMedia }) {
 
   // Create a clone for mobile view
   const socialMediaContainerMobile = socialMediaContainer.cloneNode(true);
-  socialMediaContainer.classList.add("social-media-desktop"); // Class for desktop version
-  socialMediaContainerMobile.classList.add("social-media-mobile"); // Class for mobile version
+  socialMediaContainer.classList.add("social-media-desktop");
+  socialMediaContainerMobile.classList.add("social-media-mobile");
 
-  profileCard.appendChild(socialMediaContainer); // Desktop version inside card
+  profileCard.appendChild(socialMediaContainer);
 
   container.appendChild(profileCard);
-  container.appendChild(socialMediaContainerMobile); // Mobile version after card
-
-  // Remove the JS logic for moving the element
-  /*
-  const moveSocialMedia = () => { ... };
-  moveSocialMedia();
-  window.addEventListener("resize", ...);
-  */
+  container.appendChild(socialMediaContainerMobile);
 }
 
 function createSocialLink(url, iconClass, label) {

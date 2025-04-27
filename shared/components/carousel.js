@@ -10,7 +10,6 @@ function createCarousel({
   const imageContainer = document.createElement("div");
   imageContainer.className = "carousel-image-container responsive-carousel";
 
-  // Badge
   if (showBadge) {
     const badge = document.createElement("span");
     badge.className = `carousel-badge ${badgeClass}`;
@@ -20,7 +19,6 @@ function createCarousel({
     imageContainer.appendChild(badge);
   }
 
-  // Navigation
   const prevButton = document.createElement("div");
   prevButton.className = "carousel-nav nav-prev";
   prevButton.innerHTML = '<i class="fa-solid fa-chevron-left"></i>';
@@ -30,15 +28,15 @@ function createCarousel({
   nextButton.className = "carousel-nav nav-next";
   nextButton.innerHTML = '<i class="fa-solid fa-chevron-right"></i>';
   imageContainer.appendChild(nextButton);
+
   images.forEach((imgSrc, index) => {
     const img = document.createElement("img");
 
-    // Simplified initial class assignment
     img.className = "carousel-image";
     if (index === 0) {
       img.classList.add("active");
     } else {
-      img.classList.add("next"); // All non-first images start as 'next'
+      img.classList.add("next");
     }
 
     img.src = imgSrc;
@@ -67,7 +65,6 @@ function createCarousel({
     imageContainer.appendChild(img);
   });
 
-  // Indicators
   const dotsContainer = document.createElement("div");
   dotsContainer.className = "carousel-dots";
 
@@ -203,43 +200,31 @@ function createCarousel({
 
   // Handle window resize for better responsive behavior
   const handleResize = () => {
-    // Get the current active image
     const activeImage = imageContainer.querySelector(".carousel-image.active");
     if (activeImage && activeImage.dataset.aspectRatio) {
       const aspectRatio = parseFloat(activeImage.dataset.aspectRatio);
 
       // Adjust container aspect ratio based on screen width and image orientation
       if (window.innerWidth <= 360) {
-        // Very small mobile screens - use 4:3 for all images
         imageContainer.style.aspectRatio = "4 / 3";
       } else if (window.innerWidth <= 480) {
-        // Mobile view - maintain 16:9 for better viewing
         imageContainer.style.aspectRatio = "16 / 9";
       } else if (window.innerWidth <= 768) {
-        // Tablet view - adjust based on image orientation
         if (aspectRatio > 1.2) {
-          // Landscape
           imageContainer.style.aspectRatio = "16 / 9";
         } else if (aspectRatio < 0.8) {
-          // Portrait
           imageContainer.style.aspectRatio = "4 / 3";
         } else {
-          // Square-ish
           imageContainer.style.aspectRatio = "4 / 3";
         }
       } else {
-        // Desktop view - closer to original aspect ratio
         if (aspectRatio > 1.5) {
-          // Very wide landscape
           imageContainer.style.aspectRatio = "16 / 9";
         } else if (aspectRatio > 1) {
-          // Moderate landscape
           imageContainer.style.aspectRatio = "16 / 10";
         } else if (aspectRatio < 0.7) {
-          // Tall portrait
           imageContainer.style.aspectRatio = "4 / 3";
         } else {
-          // Square-ish or moderate portrait
           imageContainer.style.aspectRatio = "4 / 3";
         }
       }

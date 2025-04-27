@@ -103,14 +103,14 @@
 
 .win-card {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 120px; /* Increase image column width */
+  grid-template-columns: 1fr 1fr 1fr 120px;
   align-items: center;
-  padding: var(--spacing-xs) var(--spacing-lg); /* Reduced vertical padding */
+  padding: var(--spacing-xs) var(--spacing-lg);
   gap: var(--spacing-md);
   box-sizing: border-box;
-  min-width: 0; /* Prevent grid items from overflowing */
-  position: relative; /* Ensure proper positioning context for dividers */
-  min-height: 90px; /* Slightly reduced minimum height */
+  min-width: 0;
+  position: relative;
+  min-height: 90px;
 }
 
 .win-type,
@@ -120,8 +120,7 @@
   flex-direction: column;
   gap: var(--spacing-xs);
   position: relative;
-  min-width: 0; /* Prevent overflow */
-  /* Remove overflow: hidden to ensure dividers are visible */
+  min-width: 0;
 }
 
 .win-date::before,
@@ -133,7 +132,7 @@
   height: 100%;
   width: 1px;
   background-color: var(--border-color);
-  z-index: 1; /* Ensure dividers appear above content */
+  z-index: 1;
 }
 
 .win-label {
@@ -151,44 +150,40 @@
   text-overflow: ellipsis;
 }
 
-/* Badge styles moved to shared/components/badges.css */
-
 .win-image-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80px; /* Set height */
-  width: 100%; /* Full width of the column */
-  aspect-ratio: 4/3; /* Landscape aspect ratio but not too wide */
-  overflow: hidden; /* Prevent image overflow */
+  height: 80px;
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
   border-radius: var(--border-radius-sm);
-  margin: 6px 0; /* Reduced vertical margin */
+  margin: 6px 0;
 }
 
 .win-image {
   height: 100%;
   width: 100%;
-  object-fit: cover; /* Cover the container while maintaining aspect ratio */
+  object-fit: cover;
   border-radius: var(--border-radius-sm);
-  object-position: center; /* Center the image */
+  object-position: center;
 }
 
 .main-prize-card {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md); /* Adjusted gap for better spacing */
+  gap: var(--spacing-md);
   padding: var(--spacing-lg);
   border-radius: var(--border-radius-xl);
   overflow: hidden;
   box-sizing: border-box;
 }
 
-/* Main prize card specific styles */
 .main-prize-info {
   display: flex;
-  justify-content: space-between; /* Keep this for title/subtitle alignment if needed */
+  justify-content: space-between;
   align-items: center;
-  /* No longer contains the date, so remove date-specific alignment if any */
 }
 
 .main-prize-title {
@@ -207,28 +202,24 @@
 .main-prize-date {
   color: var(--text-primary);
   font-size: var(--font-size-sm);
-  text-align: center; /* Align date to the center */
+  text-align: center;
   font-weight: 600;
-  /* Remove margin/padding adjustments if they were specific to the old position */
-  margin-top: var(--spacing-xs); /* Add some space above the date */
+  margin-top: var(--spacing-xs);
 }
 
-/* Default styles (Desktop) */
 .social-media-mobile {
-  display: none; /* Hide mobile version by default */
+  display: none;
 }
 
 .social-media-desktop {
   display: block;
 }
 
-/* Responsive Styles */
-/* Small screens (mobile) */
 @media (max-width: 480px) {
   #main-container {
-    grid-template-columns: 1fr; /* Single column layout */
-    gap: var(--spacing-lg); /* Adjust gap for mobile */
-    padding: var(--spacing-sm); /* Smaller padding for very small screens */
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-sm);
   }
 
   .profile-card {
@@ -236,46 +227,43 @@
   }
 
   .win-card {
-    padding: var(--spacing-xxs) var(--spacing-md); /* Further reduced vertical padding */
+    padding: var(--spacing-xxs) var(--spacing-md);
     gap: var(--spacing-xs);
-    grid-template-columns: 1fr 1fr 1fr 80px; /* Maintain wider image column */
-    min-height: 70px; /* Reduced minimum height for small screens */
+    grid-template-columns: 1fr 1fr 1fr 80px;
+    min-height: 70px;
   }
 
   .win-label {
-    font-size: var(--font-size-xs); /* Aggressively reduce label font size */
+    font-size: var(--font-size-xs);
     margin-bottom: 0;
   }
 
   .win-value {
-    font-size: var(
-      --font-size-xxs
-    ); /* Extra small font size for cell content */
+    font-size: var(--font-size-xxs);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 1.2; /* Tighter line height */
+    line-height: 1.2;
   }
 
-  /* Make badge more compact */
   .win-badge {
     padding: var(--spacing-xxs) var(--spacing-xs);
     gap: var(--spacing-xxs);
-    font-size: var(--font-size-xxs); /* Extra small font size for badge */
+    font-size: var(--font-size-xxs);
   }
 
   .win-date::before,
   .win-prize::before {
-    left: -10px; /* Reduce separator spacing */
-    width: 1px; /* Ensure divider is visible */
-    display: block; /* Removed !important */
+    left: -10px;
+    width: 1px;
+    display: block;
   }
 
   .win-image-container {
-    width: 80px; /* Maintain wider image container */
-    height: 60px; /* Height for landscape aspect ratio */
-    aspect-ratio: 4/3; /* Landscape aspect ratio but not too wide */
-    margin: 4px 0; /* Reduced vertical margin for small screens */
+    width: 80px;
+    height: 60px;
+    aspect-ratio: 4/3;
+    margin: 4px 0;
   }
 
   .main-prize-card {
@@ -296,34 +284,32 @@
   }
 }
 
-/* Medium screens (tablets) */
 @media (min-width: 481px) and (max-width: 768px) {
   #main-container {
-    grid-template-columns: 1fr; /* Single column layout */
-    gap: var(--spacing-lg); /* Adjust gap for mobile */
-    padding: var(--spacing-md); /* Medium padding for tablets */
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-md);
   }
 
   .win-card {
-    padding: var(--spacing-xs) var(--spacing-md); /* Reduced vertical padding */
+    padding: var(--spacing-xs) var(--spacing-md);
     gap: var(--spacing-sm);
-    grid-template-columns: 1fr 1fr 1fr 100px; /* Wider image column for tablets */
-    min-height: 80px; /* Reduced minimum height for medium screens */
+    grid-template-columns: 1fr 1fr 1fr 100px;
+    min-height: 80px;
   }
 
   .win-label {
-    font-size: var(--font-size-sm); /* Reduce label font size */
+    font-size: var(--font-size-sm);
     margin-bottom: 0;
   }
 
   .win-value {
-    font-size: var(--font-size-sm); /* Reduce value font size */
+    font-size: var(--font-size-sm);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
-  /* Make badge more compact but not as aggressive as small screens */
   .win-badge {
     padding: 0 var(--spacing-sm);
     gap: var(--spacing-xs);
@@ -332,190 +318,177 @@
 
   .win-date::before,
   .win-prize::before {
-    left: -15px; /* Reduce separator spacing */
-    width: 1px; /* Ensure divider is visible */
-    display: block; /* Removed !important */
+    left: -15px;
+    width: 1px;
+    display: block;
   }
 
   .win-image-container {
-    width: 100px; /* Wider image container for tablets */
-    height: 75px; /* Height for landscape aspect ratio */
-    aspect-ratio: 4/3; /* Landscape aspect ratio but not too wide */
-    margin: 5px 0; /* Reduced vertical margin for medium screens */
+    width: 100px;
+    height: 75px;
+    aspect-ratio: 4/3;
+    margin: 5px 0;
   }
 }
 
-/* Large screens (desktops) */
 @media (min-width: 769px) and (max-width: 1024px) {
   #main-container {
-    padding: var(--spacing-xl); /* Larger padding for desktops */
+    padding: var(--spacing-xl);
   }
 
   .win-card {
-    padding: var(--spacing-xs) var(--spacing-lg); /* Reduced vertical padding */
+    padding: var(--spacing-xs) var(--spacing-lg);
     gap: var(--spacing-md);
-    grid-template-columns: 1fr 1fr 1fr 120px; /* Wider image column for desktops */
-    min-height: 85px; /* Reduced minimum height for large screens */
+    grid-template-columns: 1fr 1fr 1fr 120px;
+    min-height: 85px;
   }
 
-  /* Ensure image container maintains landscape aspect ratio */
   .win-image-container {
-    height: 90px; /* Height for landscape aspect ratio */
-    aspect-ratio: 4/3; /* Landscape aspect ratio but not too wide */
-    margin: 6px 0; /* Reduced vertical margin */
+    height: 90px;
+    aspect-ratio: 4/3;
+    margin: 6px 0;
   }
 
   .win-label {
-    font-size: var(--font-size-md); /* Slightly reduce label font size */
+    font-size: var(--font-size-md);
   }
 
   .win-value {
-    font-size: var(--font-size-sm); /* Slightly reduce value font size */
+    font-size: var(--font-size-sm);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
-  /* Ensure dividers are visible */
   .win-date::before,
   .win-prize::before {
-    left: -20px; /* Standard separator spacing */
-    display: block; /* Ensure display */
+    left: -20px;
+    display: block;
   }
 }
 
-/* Extra large screens */
 @media (min-width: 1025px) {
   #main-container {
-    padding: var(--spacing-xl); /* Extra large padding for large screens */
+    padding: var(--spacing-xl);
   }
 
-  /* Ensure image container has landscape aspect ratio */
   .win-image-container {
-    height: 105px; /* Height for landscape aspect ratio */
-    aspect-ratio: 4/3; /* Landscape aspect ratio but not too wide */
-    margin: 8px 0; /* Reduced vertical margin for extra large screens */
+    height: 105px;
+    aspect-ratio: 4/3;
+    margin: 8px 0;
   }
 
   .win-card {
-    grid-template-columns: 1fr 1fr 1fr 140px; /* Even wider image column for large screens */
+    grid-template-columns: 1fr 1fr 1fr 140px;
   }
 
-  /* Ensure dividers are visible */
   .win-date::before,
   .win-prize::before {
-    left: -20px; /* Standard separator spacing */
-    display: block; /* Ensure display */
+    left: -20px;
+    display: block;
   }
 }
 
-/* Common mobile styles (applies to all screens <= 768px) */
 @media (max-width: 768px) {
   #profile-container {
-    position: static; /* Remove sticky positioning */
+    position: static;
     top: 0;
   }
 
   .profile-card {
-    /* Revert to simpler mobile layout, no need to manage internal social links */
-    flex-direction: row; /* Horizontal layout for photo/text */
-    align-items: center; /* Center items vertically */
-    padding: var(--spacing-md) 64px var(--spacing-md) var(--spacing-md); /* Adjust padding - Added more right padding */
-    width: fit-content; /* Take only necessary width */
-    margin: 0 auto var(--spacing-lg); /* Center the card horizontally, add bottom margin */
+    flex-direction: row;
+    align-items: center;
+    padding: var(--spacing-md) 64px var(--spacing-md) var(--spacing-md);
+    width: fit-content;
+    margin: 0 auto var(--spacing-lg);
   }
 
   .profile-content {
-    flex-direction: row; /* Horizontal layout for photo and text */
-    text-align: left; /* Align text to the left */
-    gap: var(--spacing-md); /* Gap between photo and text */
-    width: auto; /* Allow content to size naturally */
+    flex-direction: row;
+    text-align: left;
+    gap: var(--spacing-md);
+    width: auto;
     align-items: center;
-    margin-bottom: 0; /* Remove bottom margin, handled by card margin */
+    margin-bottom: 0;
   }
 
   .profile-photo {
-    width: 60px; /* Smaller photo */
+    width: 60px;
     height: 60px;
-    margin-bottom: 0; /* Remove bottom margin */
+    margin-bottom: 0;
   }
 
   .profile-text-info {
-    /* Style the new container */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
 
   .profile-name {
-    font-size: var(--font-size-lg); /* Adjust font size */
-    margin-bottom: 0; /* Remove bottom margin */
+    font-size: var(--font-size-lg);
+    margin-bottom: 0;
   }
 
   .profile-country {
-    margin-bottom: 0; /* Remove bottom margin */
-    justify-content: flex-start; /* Align country info to the start */
+    margin-bottom: 0;
+    justify-content: flex-start;
   }
 
   .profile-divider {
-    display: none; /* Hide divider on mobile */
+    display: none;
   }
 
-  /* Hide the desktop social media container */
   .social-media-desktop {
     display: none;
   }
 
-  /* Show and style the mobile social media container (outside the card) */
   .social-media-mobile {
-    display: flex; /* Use flex for centering */
-    justify-content: center; /* Center the links container */
-    width: 100%; /* Take full width */
-    padding: 0 var(--spacing-md); /* Add horizontal padding if needed */
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0 var(--spacing-md);
     box-sizing: border-box;
   }
 
-  /* Apply link styles to the mobile version */
   .social-media-mobile .social-media-heading {
-    display: none; /* Hide "Social Media" heading */
+    display: none;
   }
 
   .social-media-mobile .social-media-links {
     display: flex;
-    flex-direction: row; /* Horizontal social links */
-    justify-content: center; /* Center the icons */
-    align-items: center; /* Align items vertically */
-    gap: 48px; /* Further increased gap between links */
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
   }
 
   .social-media-mobile .social-link {
-    display: flex; /* Align icon and text */
+    display: flex;
     align-items: center;
-    gap: var(--spacing-xs); /* Gap between icon and text */
-    padding: 0; /* Remove default padding */
-    position: relative; /* Needed for pseudo-element */
-    font-size: var(--font-size-sm); /* Match image font size */
-    text-decoration: none; /* Remove underline */
+    gap: var(--spacing-xs);
+    padding: 0;
+    position: relative;
+    font-size: var(--font-size-sm);
+    text-decoration: none;
   }
 
-  /* Add vertical separators to mobile version */
   .social-media-mobile .social-link:not(:last-child)::after {
     content: "";
     position: absolute;
-    right: -24px; /* Half of the new gap (48px / 2) */
+    right: -24px;
     top: 50%;
     transform: translateY(-50%);
-    height: 16px; /* Adjust height as needed */
+    height: 16px;
     width: 1px;
-    background-color: var(--border-color); /* Separator color */
+    background-color: var(--border-color);
   }
 
   .social-media-mobile .social-link span {
-    display: inline; /* Show text labels */
+    display: inline;
   }
 
   .social-media-mobile .social-icon {
-    font-size: var(--font-size-md); /* Adjust icon size if needed */
+    font-size: var(--font-size-md);
   }
 
   .main-prize-card {
@@ -523,26 +496,22 @@
     gap: var(--spacing-sm);
   }
 
-  /* Ensure text doesn't overflow */
   .win-type,
   .win-date,
   .win-prize {
     max-width: 100%;
-    position: relative; /* Ensure position is set for dividers */
+    position: relative;
   }
 
-  /* Add ellipsis for overflowing text */
   .win-value {
     max-width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* Font size is set in specific media queries */
   }
 
-  /* Ensure dividers are visible */
   .win-date::before,
   .win-prize::before {
-    display: block !important; /* Force display of dividers */
+    display: block !important;
   }
 }

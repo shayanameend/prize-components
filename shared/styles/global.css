@@ -28,7 +28,7 @@
   --spacing-xl: 32px;
 
   --font-family: "Manrope", sans-serif;
-  --font-size-xxs: 0.625rem; /* Added extra small font size for very small screens */
+  --font-size-xxs: 0.625rem;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-md: 1rem;
