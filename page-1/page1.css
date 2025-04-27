@@ -109,6 +109,7 @@
   padding: var(--spacing-md) var(--spacing-lg);
   gap: var(--spacing-md);
   box-sizing: border-box;
+  min-width: 0; /* Prevent grid items from overflowing */
 }
 
 .win-type,
@@ -118,6 +119,8 @@
   flex-direction: column;
   gap: var(--spacing-xs);
   position: relative;
+  min-width: 0; /* Prevent overflow */
+  overflow: hidden; /* Prevent text overflow */
 }
 
 .win-date::before,
@@ -155,6 +158,7 @@
   height: 100%;
   width: 100%;
   object-fit: cover;
+  border-radius: var(--border-radius-sm);
 }
 
 .main-prize-card {
@@ -223,11 +227,53 @@
   .win-card {
     padding: var(--spacing-xs) var(--spacing-sm);
     gap: var(--spacing-xs);
+    grid-template-columns: 1fr 1fr 1fr 60px; /* Reduce image column width */
+  }
+
+  .win-label {
+    font-size: var(--font-size-xs); /* Aggressively reduce label font size */
+    margin-bottom: 0;
+  }
+
+  .win-value {
+    font-size: var(--font-size-xs); /* Aggressively reduce value font size */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Make badge more compact */
+  .win-badge {
+    padding: 0 var(--spacing-xs);
+    gap: var(--spacing-xxs);
+    font-size: var(--font-size-xs);
+  }
+
+  .win-date::before,
+  .win-prize::before {
+    left: -10px; /* Reduce separator spacing */
+  }
+
+  .win-image-container {
+    width: 60px; /* Reduce image container width */
+    height: 60px; /* Reduce image container height */
   }
 
   .main-prize-card {
     padding: var(--spacing-sm);
     gap: var(--spacing-xs);
+  }
+
+  .main-prize-title {
+    font-size: var(--font-size-sm);
+  }
+
+  .main-prize-subtitle {
+    font-size: var(--font-size-xs);
+  }
+
+  .main-prize-date {
+    font-size: var(--font-size-xs);
   }
 }
 
@@ -238,12 +284,64 @@
     gap: var(--spacing-lg); /* Adjust gap for mobile */
     padding: var(--spacing-md); /* Medium padding for tablets */
   }
+
+  .win-card {
+    padding: var(--spacing-sm) var(--spacing-md);
+    gap: var(--spacing-sm);
+    grid-template-columns: 1fr 1fr 1fr 70px; /* Slightly reduce image column width */
+  }
+
+  .win-label {
+    font-size: var(--font-size-sm); /* Reduce label font size */
+    margin-bottom: 0;
+  }
+
+  .win-value {
+    font-size: var(--font-size-sm); /* Reduce value font size */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Make badge more compact but not as aggressive as small screens */
+  .win-badge {
+    padding: 0 var(--spacing-sm);
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+  }
+
+  .win-date::before,
+  .win-prize::before {
+    left: -15px; /* Reduce separator spacing */
+  }
+
+  .win-image-container {
+    width: 70px; /* Reduce image container width */
+    height: 70px; /* Reduce image container height */
+  }
 }
 
 /* Large screens (desktops) */
 @media (min-width: 769px) and (max-width: 1024px) {
   #main-container {
     padding: var(--spacing-lg); /* Larger padding for desktops */
+  }
+
+  .win-card {
+    padding: var(--spacing-md) var(--spacing-lg);
+    gap: var(--spacing-md);
+    grid-template-columns: 1fr 1fr 1fr 80px; /* Standard image column width */
+  }
+
+  .win-label {
+    font-size: var(--font-size-md); /* Slightly reduce label font size */
+  }
+
+  .win-value {
+    font-size: var(--font-size-sm); /* Slightly reduce value font size */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
@@ -363,7 +461,7 @@
     font-size: var(--font-size-md); /* Adjust icon size if needed */
   }
 
-  /* Adjust win card layout for mobile */
+  /* Adjust win card layout for mobile - maintain grid layout but reduce sizes */
   .win-card {
     padding: var(--spacing-sm) var(--spacing-md);
     gap: var(--spacing-sm);
@@ -372,5 +470,20 @@
   .main-prize-card {
     padding: var(--spacing-md);
     gap: var(--spacing-sm);
+  }
+
+  /* Ensure text doesn't overflow */
+  .win-type,
+  .win-date,
+  .win-prize {
+    max-width: 100%;
+  }
+
+  /* Add ellipsis for overflowing text */
+  .win-value {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
