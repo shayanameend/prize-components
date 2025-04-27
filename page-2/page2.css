@@ -4,7 +4,6 @@
   gap: var(--spacing-xl);
   margin: 0 auto;
   max-width: 1024px;
-  padding: var(--spacing-md);
 }
 
 #total-prize-container {
@@ -144,8 +143,25 @@
 
 /* Responsive Styles for Winners Table */
 @media (max-width: 768px) {
+  #main-container {
+    padding: 0; /* Remove padding */
+    max-width: none; /* Remove max-width constraint */
+    margin: 0; /* Remove auto margins */
+  }
+
+  /* Add this rule for the total prize card */
+  .total-prize-card {
+    width: 100%; /* Make card full width on smaller screens */
+    border-radius: 0; /* Optional: Remove border-radius if it looks odd at full width */
+  }
+
   .winners-heading {
     text-align: center; /* Center heading */
+    padding-top: var(--spacing-md); /* Add padding back above heading */
+  }
+
+  .winners-table {
+    padding: 0 var(--spacing-smd); /* Add horizontal padding back to table */
   }
 
   .winners-header {
