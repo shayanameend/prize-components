@@ -114,14 +114,12 @@
   color: var(--text-light);
 }
 
-/* Badge styles moved to shared/components/badges.css */
-
-.date-cell {
+/* Hide mobile country info by default */
+.user-country-mobile {
+  display: none;
+  font-size: var(--font-size-sm);
   color: var(--text-light);
-}
-
-.prize-cell {
-  color: var(--text-light);
+  gap: var(--spacing-xs);
 }
 
 .main-prize-row {
@@ -142,4 +140,106 @@
 /* Main prize row specific styles */
 .main-prize-image-container {
   margin: 0 0 var(--spacing-md); /* Remove horizontal margins, keep bottom margin */
+}
+
+/* Responsive Styles for Winners Table */
+@media (max-width: 768px) {
+  .winners-heading {
+    text-align: center; /* Center heading */
+  }
+
+  .winners-header {
+    grid-template-columns: 2fr 1fr 1fr 1fr; /* Adjust grid for 4 columns */
+    padding: var(--spacing-sm) var(--spacing-smd); /* Adjust padding */
+  }
+
+  .header-cell.country-cell {
+    display: none; /* Hide country header */
+  }
+
+  .winner-row,
+  .main-prize-info {
+    grid-template-columns: 2fr 1fr 1fr 1fr; /* Adjust grid for 4 columns */
+    padding: var(--spacing-smd); /* Adjust padding */
+    gap: var(--spacing-sm); /* Adjust gap */
+  }
+
+  .winner-cell.country-cell {
+    display: none; /* Hide country cell */
+  }
+
+  .user-info {
+    /* Revert to row direction for photo + text block */
+    /* flex-direction: column; */ /* Remove this */
+    align-items: center; /* Vertically align photo and text block */
+    gap: var(--spacing-sm); /* Adjust gap between photo and text block */
+  }
+
+  /* Style the new wrapper for vertical stacking of name/country */
+  .user-name-country-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align text left */
+    gap: 2px; /* Small gap between name and country */
+  }
+
+  .user-country-mobile {
+    display: flex; /* Show mobile country info */
+    align-items: center;
+  }
+
+  .main-prize-user-info {
+    flex-direction: row; /* Keep main prize user info horizontal */
+    align-items: center; /* Align items center */
+    gap: var(--spacing-sm); /* Add gap for main prize row */
+  }
+
+  .main-prize-user-info .user-country-mobile {
+    display: none; /* Keep hiding mobile country for main prize user */
+  }
+
+  /* Adjust font sizes for smaller cells */
+  .header-cell,
+  .winner-cell {
+    font-size: var(--font-size-sm);
+  }
+
+  .user-name {
+    font-size: var(--font-size-md); /* Ensure name is readable */
+  }
+
+  .win-badge {
+    font-size: var(--font-size-xs); /* Smaller badges */
+    padding: 1px var(--spacing-xs);
+  }
+
+  .main-prize-info {
+    padding: var(--spacing-smd) 0; /* Adjust padding */
+  }
+}
+
+@media (max-width: 480px) {
+  .winners-header {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    gap: var(--spacing-xs);
+  }
+  .winner-row,
+  .main-prize-info {
+    padding: var(--spacing-sm);
+    gap: var(--spacing-xs);
+  }
+  .header-cell,
+  .winner-cell {
+    font-size: var(--font-size-xs); /* Even smaller font */
+  }
+  .user-name {
+    font-size: var(--font-size-sm);
+  }
+  .user-photo {
+    width: 32px;
+    height: 32px;
+  }
+  .user-country-mobile {
+    font-size: var(--font-size-xs);
+  }
 }

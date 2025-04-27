@@ -76,15 +76,27 @@ function createRegularWinnerRow(winner) {
   userPhoto.alt = `${winner.name}'s photo`;
   userInfo.appendChild(userPhoto);
 
+  // Create a wrapper for name and mobile country
+  const nameCountryWrapper = document.createElement("div");
+  nameCountryWrapper.className = "user-name-country-wrapper";
+
   const userName = document.createElement("div");
   userName.className = "user-name";
   userName.textContent = winner.name;
-  userInfo.appendChild(userName);
+  nameCountryWrapper.appendChild(userName); // Add name to wrapper
+
+  // Add country info for mobile view inside user-info
+  const mobileCountryInfo = document.createElement("div");
+  mobileCountryInfo.className = "user-country-mobile";
+  mobileCountryInfo.innerHTML = `<span>${winner.country}</span> ${winner.flag}`;
+  nameCountryWrapper.appendChild(mobileCountryInfo); // Add mobile country to wrapper
+
+  userInfo.appendChild(nameCountryWrapper); // Add wrapper to userInfo
 
   userCell.appendChild(userInfo);
   row.appendChild(userCell);
 
-  // Country cell
+  // Country cell (remains for larger screens)
   const countryCell = document.createElement("div");
   countryCell.className = "winner-cell country-cell";
   countryCell.setAttribute("data-label", "Country");
@@ -144,7 +156,7 @@ function createMainPrizeRow(winner) {
   userCell.setAttribute("data-label", "User");
 
   const userInfo = document.createElement("div");
-  userInfo.className = "user-info main-prize-user-info";
+  userInfo.className = "user-info main-prize-user-info"; // Keep main prize structure
   userInfo.setAttribute("data-date", formatDate(winner.date));
   userInfo.setAttribute("data-prize", winner.prize);
   userInfo.setAttribute("data-country", `${winner.country} ${winner.flag}`);
@@ -160,10 +172,16 @@ function createMainPrizeRow(winner) {
   userName.textContent = winner.name;
   userInfo.appendChild(userName);
 
+  // Add country info for mobile view inside user-info (remains hidden by CSS for main prize)
+  const mobileCountryInfo = document.createElement("div");
+  mobileCountryInfo.className = "user-country-mobile";
+  mobileCountryInfo.innerHTML = `<span>${winner.country}</span> ${winner.flag}`;
+  userInfo.appendChild(mobileCountryInfo);
+
   userCell.appendChild(userInfo);
   infoSection.appendChild(userCell);
 
-  // Country cell
+  // Country cell (remains for larger screens)
   const countryCell = document.createElement("div");
   countryCell.className = "winner-cell country-cell";
   countryCell.setAttribute("data-label", "Country");
