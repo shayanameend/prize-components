@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -12,18 +14,20 @@
   --text-light: #999999;
   --border-color: #e0e0e0;
   --accent-color: #4caf50;
-  --mini-badge-bg: #e8f5e9;
-  --mini-badge-text: #4caf50;
-  --main-badge-bg: #e3f2fd;
-  --main-badge-text: #2196f3;
+  --mini-badge-bg: #5be7d1;
+  --mini-badge-text: #1c8a79;
+  --main-badge-bg: #ecf4fd;
+  --main-badge-text: #156be0;
 
+  --spacing-xxs: 2px;
   --spacing-xs: 4px;
   --spacing-sm: 8px;
+  --spacing-smd: 12px;
   --spacing-md: 16px;
   --spacing-lg: 24px;
   --spacing-xl: 32px;
 
-  --font-family: sans-serif;
+  --font-family: "Manrope", sans-serif;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-md: 1rem;
@@ -36,6 +40,7 @@
   --border-radius-sm: 4px;
   --border-radius-md: 8px;
   --border-radius-lg: 12px;
+  --border-radius-xl: 16px;
   --border-radius-circle: 50%;
 }
 

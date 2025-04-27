@@ -2,7 +2,6 @@
   position: relative;
   height: 350px;
   overflow: hidden;
-  margin: var(--spacing-md) var(--spacing-md) var(--spacing-xs);
   border-radius: var(--border-radius-md);
 }
 
@@ -115,9 +114,9 @@
   left: var(--spacing-md);
   z-index: 10;
   display: inline-flex;
-  gap: var(--spacing-xs);
+  gap: var(--spacing-sm);
   align-items: center;
-  padding: var(--spacing-xs) var(--spacing-sm);
+  padding: 6px var(--spacing-smd); /* Set vertical padding to 6px */
   border-radius: var(--border-radius-sm);
   font-size: var(--font-size-sm);
   font-weight: 500;
@@ -128,10 +127,10 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: var(--border-radius-circle);
+  width: 32px; /* Reduced width */
+  height: 40px; /* Kept height */
+  background-color: rgba(255, 255, 255, 0.5); /* Reduced transparency */
+  backdrop-filter: blur(3px); /* Reduced blur */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -140,11 +139,19 @@
 }
 
 .nav-prev {
-  left: var(--spacing-md);
+  left: 0; /* Position at the left edge */
+  border-top-right-radius: var(--border-radius-sm); /* Reduced roundness */
+  border-bottom-right-radius: var(--border-radius-sm); /* Reduced roundness */
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .nav-next {
-  right: var(--spacing-md);
+  right: 0; /* Position at the right edge */
+  border-top-left-radius: var(--border-radius-sm); /* Reduced roundness */
+  border-bottom-left-radius: var(--border-radius-sm); /* Reduced roundness */
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .carousel-dots {
@@ -153,7 +160,7 @@
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: var(--spacing-xs);
+  gap: var(--spacing-smd); /* Reverted gap */
   z-index: 5;
 }
 
@@ -161,34 +168,14 @@
   width: 8px;
   height: 8px;
   border-radius: var(--border-radius-circle);
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: white;
   cursor: pointer;
 }
 
 .dot.active {
-  background-color: white;
+  background-color: var(--mini-badge-bg);
 }
 
-/* Responsive styles */
-@media (max-width: 992px) {
-  .carousel-image-container {
-    height: 300px;
-  }
-}
-
-@media (max-width: 768px) {
-  .carousel-image-container {
-    height: 250px;
-  }
-}
-
-@media (max-width: 576px) {
-  .carousel-image-container {
-    height: 200px;
-  }
-
-  .carousel-nav {
-    width: 32px;
-    height: 32px;
-  }
+.carousel-nav i {
+  color: white !important; /* Set Font Awesome icon color to white */
 }
