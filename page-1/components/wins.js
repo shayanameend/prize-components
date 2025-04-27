@@ -1,9 +1,6 @@
 function loadWins({ container, data }) {
-  const sortedData = [...data].sort(
-    (a, b) => new Date(b.date) - new Date(a.date)
-  );
-
-  sortedData.forEach((win) => {
+  // Use the data directly without sorting
+  data.forEach((win) => {
     let winCard;
 
     if (win.type === "main") {

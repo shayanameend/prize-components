@@ -38,11 +38,8 @@ function loadWinners({ container, data }) {
 }
 
 function populateWinnersList({ container, data }) {
-  const sortedData = [...data].sort(
-    (a, b) => new Date(b.date) - new Date(a.date)
-  );
-
-  sortedData.forEach((winner) => {
+  // Use the data directly without sorting
+  data.forEach((winner) => {
     let winnerRow;
 
     if (winner.type === "main") {
