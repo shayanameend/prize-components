@@ -11,15 +11,20 @@ function loadProfile({ container, name, photo, country, flag, socialMedia }) {
   profilePhoto.alt = `${name}'s profile photo`;
   profileContent.appendChild(profilePhoto);
 
+  const profileTextInfo = document.createElement("div"); // New container
+  profileTextInfo.className = "profile-text-info"; // New class
+
   const profileName = document.createElement("h2");
   profileName.className = "profile-name";
   profileName.textContent = name;
-  profileContent.appendChild(profileName);
+  profileTextInfo.appendChild(profileName); // Append name to new container
 
   const profileCountry = document.createElement("div");
   profileCountry.className = "profile-country";
   profileCountry.innerHTML = `<span>${country}</span> ${flag}`;
-  profileContent.appendChild(profileCountry);
+  profileTextInfo.appendChild(profileCountry); // Append country to new container
+
+  profileContent.appendChild(profileTextInfo); // Append new container to content
 
   profileCard.appendChild(profileContent);
 
@@ -42,7 +47,7 @@ function loadProfile({ container, name, photo, country, flag, socialMedia }) {
     const facebookLink = createSocialLink(
       socialMedia.facebook.url,
       "fa-brands fa-facebook-f",
-      socialMedia.facebook.label,
+      socialMedia.facebook.label
     );
     socialMediaLinks.appendChild(facebookLink);
   }
@@ -51,7 +56,7 @@ function loadProfile({ container, name, photo, country, flag, socialMedia }) {
     const instagramLink = createSocialLink(
       socialMedia.instagram.url,
       "fa-brands fa-instagram",
-      socialMedia.instagram.label,
+      socialMedia.instagram.label
     );
     socialMediaLinks.appendChild(instagramLink);
   }
@@ -60,16 +65,29 @@ function loadProfile({ container, name, photo, country, flag, socialMedia }) {
     const twitterLink = createSocialLink(
       socialMedia.twitter.url,
       "fa-brands fa-twitter",
-      socialMedia.twitter.label,
+      socialMedia.twitter.label
     );
     socialMediaLinks.appendChild(twitterLink);
   }
 
   socialMediaContainer.appendChild(socialMediaLinks);
 
-  profileCard.appendChild(socialMediaContainer);
+  // Create a clone for mobile view
+  const socialMediaContainerMobile = socialMediaContainer.cloneNode(true);
+  socialMediaContainer.classList.add("social-media-desktop"); // Class for desktop version
+  socialMediaContainerMobile.classList.add("social-media-mobile"); // Class for mobile version
+
+  profileCard.appendChild(socialMediaContainer); // Desktop version inside card
 
   container.appendChild(profileCard);
+  container.appendChild(socialMediaContainerMobile); // Mobile version after card
+
+  // Remove the JS logic for moving the element
+  /*
+  const moveSocialMedia = () => { ... };
+  moveSocialMedia();
+  window.addEventListener("resize", ...);
+  */
 }
 
 function createSocialLink(url, iconClass, label) {
