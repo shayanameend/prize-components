@@ -19,7 +19,7 @@
   color: var(--main-badge-text);
 }
 
-/* Responsive adjustments for badges */
+
 @media (max-width: 360px) {
   .win-badge {
     padding: 2px var(--spacing-xs);

@@ -83,7 +83,7 @@ function createCarousel({
         "slide-out-to-left",
         "slide-out-to-right",
         "prev",
-        "next",
+        "next"
       );
 
       if (direction === "next") {
@@ -91,8 +91,6 @@ function createCarousel({
       } else if (direction === "prev") {
         newImage.classList.add("prev");
       }
-
-      // Force a reflow to ensure the browser recognizes the position change
       void newImage.offsetWidth;
 
       if (direction === "next") {
@@ -111,7 +109,7 @@ function createCarousel({
             "slide-in-from-left",
             "slide-in-from-right",
             "slide-out-to-left",
-            "slide-out-to-right",
+            "slide-out-to-right"
           );
 
           const imgIndex = parseInt(img.dataset.index);
@@ -135,7 +133,7 @@ function createCarousel({
           "slide-in-from-left",
           "slide-in-from-right",
           "slide-out-to-left",
-          "slide-out-to-right",
+          "slide-out-to-right"
         );
 
         const imgIndex = parseInt(img.dataset.index);
@@ -166,7 +164,6 @@ function createCarousel({
   dots.forEach((dot) => {
     dot.addEventListener("click", () => {
       const index = parseInt(dot.dataset.index);
-      // Determine direction based on index
       let direction = null;
       if (index > currentIndex) {
         direction = "next";
@@ -185,7 +182,7 @@ function createCarousel({
     (e) => {
       touchStartX = e.changedTouches[0].screenX;
     },
-    { passive: true },
+    { passive: true }
   );
 
   imageContainer.addEventListener(
@@ -194,7 +191,7 @@ function createCarousel({
       touchEndX = e.changedTouches[0].screenX;
       handleSwipe();
     },
-    { passive: true },
+    { passive: true }
   );
 
   function handleSwipe() {

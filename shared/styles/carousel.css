@@ -308,7 +308,7 @@
   }
 }
 
-/* Add support for very small screens */
+
 @media (max-width: 320px) {
   .carousel-image-container {
     aspect-ratio: 16 / 9;

@@ -148,15 +148,20 @@ function createMainPrizeRow(winner) {
   userPhoto.alt = `${winner.name}'s photo`;
   userInfo.appendChild(userPhoto);
 
+  const nameCountryWrapper = document.createElement("div");
+  nameCountryWrapper.className = "user-name-country-wrapper";
+
   const userName = document.createElement("div");
   userName.className = "user-name";
   userName.textContent = winner.name;
-  userInfo.appendChild(userName);
+  nameCountryWrapper.appendChild(userName);
 
   const mobileCountryInfo = document.createElement("div");
   mobileCountryInfo.className = "user-country-mobile";
   mobileCountryInfo.innerHTML = `<span>${winner.country}</span> ${winner.flag}`;
-  userInfo.appendChild(mobileCountryInfo);
+  nameCountryWrapper.appendChild(mobileCountryInfo);
+
+  userInfo.appendChild(nameCountryWrapper);
 
   userCell.appendChild(userInfo);
   infoSection.appendChild(userCell);
