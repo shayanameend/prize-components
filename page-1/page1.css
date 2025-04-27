@@ -17,7 +17,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding: var(--spacing-lg) var(--spacing-md);
+  padding: var(--spacing-lg);
 }
 
 .profile-content {
@@ -61,9 +61,10 @@
 
 .social-media-heading {
   color: var(--text-primary);
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-md);
   font-weight: 600;
-  margin-bottom: var(--spacing-md);
+  margin-left: var(--spacing-xxs);
+  margin-bottom: var(--spacing-xs);
 }
 
 .social-media-links {
@@ -73,13 +74,13 @@
 }
 
 .social-link {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs);
   align-items: center;
   border-radius: var(--border-radius-sm);
   color: var(--text-primary);
   display: flex;
-  gap: var(--spacing-xs);
-  padding: var(--spacing-xs) 0;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xs);
   text-decoration: none;
   transition: background-color 0.2s;
   width: 100%;
@@ -91,7 +92,6 @@
 
 .social-icon {
   text-align: center;
-  width: 24px;
 }
 
 #wins-container {
