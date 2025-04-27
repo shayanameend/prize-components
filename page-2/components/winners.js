@@ -31,15 +31,15 @@ function loadWinners({ container, data }) {
   winnersTable.appendChild(winnersList);
 
   container.appendChild(winnersTable);
-  loadWinners({
+  populateWinnersList({
     container: winnersList,
     data: data,
   });
 }
 
-function loadWinners({ container, data }) {
+function populateWinnersList({ container, data }) {
   const sortedData = [...data].sort(
-    (a, b) => new Date(b.date) - new Date(a.date),
+    (a, b) => new Date(b.date) - new Date(a.date)
   );
 
   sortedData.forEach((winner) => {
