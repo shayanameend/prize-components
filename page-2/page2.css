@@ -127,7 +127,7 @@
 .main-prize-row {
   display: flex;
   flex-direction: column;
-  padding: 0;
+  padding: 0 var(--spacing-md);
   border-bottom: 1px solid var(--border-color);
   margin-bottom: var(--spacing-md);
 }
@@ -135,11 +135,11 @@
 .main-prize-info {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  padding: var(--spacing-md);
+  padding: var(--spacing-md) 0;
   align-items: center;
 }
 
 /* Main prize row specific styles */
 .main-prize-image-container {
-  margin: 0 var(--spacing-md) var(--spacing-md);
+  margin: 0 0 var(--spacing-md); /* Remove horizontal margins, keep bottom margin */
 }
