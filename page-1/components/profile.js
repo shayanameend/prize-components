@@ -47,7 +47,7 @@ function loadProfile({ container, name, photo, country, flag, socialMedia }) {
     const facebookLink = createSocialLink(
       socialMedia.facebook.url,
       "fa-brands fa-facebook-f",
-      socialMedia.facebook.label
+      socialMedia.facebook.label,
     );
     socialMediaLinks.appendChild(facebookLink);
   }
@@ -56,7 +56,7 @@ function loadProfile({ container, name, photo, country, flag, socialMedia }) {
     const instagramLink = createSocialLink(
       socialMedia.instagram.url,
       "fa-brands fa-instagram",
-      socialMedia.instagram.label
+      socialMedia.instagram.label,
     );
     socialMediaLinks.appendChild(instagramLink);
   }
@@ -65,7 +65,7 @@ function loadProfile({ container, name, photo, country, flag, socialMedia }) {
     const twitterLink = createSocialLink(
       socialMedia.twitter.url,
       "fa-brands fa-twitter",
-      socialMedia.twitter.label
+      socialMedia.twitter.label,
     );
     socialMediaLinks.appendChild(twitterLink);
   }

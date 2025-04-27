@@ -46,17 +46,6 @@ function createCarousel({
       if (index === 0) {
         img.style.opacity = "1";
       }
-
-      const aspectRatio = this.naturalWidth / this.naturalHeight;
-      img.dataset.aspectRatio = aspectRatio.toFixed(2);
-
-      if (aspectRatio > 1.2) {
-        img.classList.add("landscape");
-      } else if (aspectRatio < 0.8) {
-        img.classList.add("portrait");
-      } else {
-        img.classList.add("square");
-      }
     };
 
     imageContainer.appendChild(img);
@@ -94,7 +83,7 @@ function createCarousel({
         "slide-out-to-left",
         "slide-out-to-right",
         "prev",
-        "next"
+        "next",
       );
 
       if (direction === "next") {
@@ -122,7 +111,7 @@ function createCarousel({
             "slide-in-from-left",
             "slide-in-from-right",
             "slide-out-to-left",
-            "slide-out-to-right"
+            "slide-out-to-right",
           );
 
           const imgIndex = parseInt(img.dataset.index);
@@ -146,7 +135,7 @@ function createCarousel({
           "slide-in-from-left",
           "slide-in-from-right",
           "slide-out-to-left",
-          "slide-out-to-right"
+          "slide-out-to-right",
         );
 
         const imgIndex = parseInt(img.dataset.index);
@@ -161,13 +150,6 @@ function createCarousel({
     }
 
     currentIndex = index;
-
-    // Update aspect ratio based on the new active image
-    const activeImage = carouselImages[index];
-    if (activeImage && activeImage.dataset.aspectRatio) {
-      // Call the resize handler to adjust the container aspect ratio
-      handleResize();
-    }
   }
 
   prevButton.addEventListener("click", () => {
@@ -195,46 +177,6 @@ function createCarousel({
     });
   });
 
-  // Handle window resize for better responsive behavior
-  const handleResize = () => {
-    const activeImage = imageContainer.querySelector(".carousel-image.active");
-    if (activeImage && activeImage.dataset.aspectRatio) {
-      const aspectRatio = parseFloat(activeImage.dataset.aspectRatio);
-
-      // Adjust container aspect ratio based on screen width and image orientation
-      if (window.innerWidth <= 360) {
-        imageContainer.style.aspectRatio = "4 / 3";
-      } else if (window.innerWidth <= 480) {
-        imageContainer.style.aspectRatio = "16 / 9";
-      } else if (window.innerWidth <= 768) {
-        if (aspectRatio > 1.2) {
-          imageContainer.style.aspectRatio = "16 / 9";
-        } else if (aspectRatio < 0.8) {
-          imageContainer.style.aspectRatio = "4 / 3";
-        } else {
-          imageContainer.style.aspectRatio = "4 / 3";
-        }
-      } else {
-        if (aspectRatio > 1.5) {
-          imageContainer.style.aspectRatio = "16 / 9";
-        } else if (aspectRatio > 1) {
-          imageContainer.style.aspectRatio = "16 / 10";
-        } else if (aspectRatio < 0.7) {
-          imageContainer.style.aspectRatio = "4 / 3";
-        } else {
-          imageContainer.style.aspectRatio = "4 / 3";
-        }
-      }
-    }
-  };
-
-  // Initial resize handling
-  handleResize();
-
-  // Add resize event listener
-  window.addEventListener("resize", handleResize);
-
-  // Add touch support for mobile devices
   let touchStartX = 0;
   let touchEndX = 0;
 
@@ -243,7 +185,7 @@ function createCarousel({
     (e) => {
       touchStartX = e.changedTouches[0].screenX;
     },
-    { passive: true }
+    { passive: true },
   );
 
   imageContainer.addEventListener(
@@ -252,17 +194,15 @@ function createCarousel({
       touchEndX = e.changedTouches[0].screenX;
       handleSwipe();
     },
-    { passive: true }
+    { passive: true },
   );
 
   function handleSwipe() {
-    const swipeThreshold = 50; // Minimum distance required for a swipe
+    const swipeThreshold = 50;
     if (touchEndX < touchStartX - swipeThreshold) {
-      // Swipe left - show next image
       const newIndex = (currentIndex + 1) % carouselImages.length;
       showImage(newIndex, "next");
     } else if (touchEndX > touchStartX + swipeThreshold) {
-      // Swipe right - show previous image
       const newIndex =
         (currentIndex - 1 + carouselImages.length) % carouselImages.length;
       showImage(newIndex, "prev");
