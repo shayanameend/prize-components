@@ -18,7 +18,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-sm);
+  padding: var(--spacing-lg) var(--spacing-xl);
   text-align: center;
   width: 400px;
   max-width: 100%;
@@ -127,13 +127,18 @@
   padding: 0 var(--spacing-md);
   border-bottom: 1px solid var(--border-color);
   margin-bottom: var(--spacing-md);
+  position: relative; /* For positioning the divider */
 }
 
+/* Main prize info section with divider between info and carousel */
 .main-prize-info {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   padding: var(--spacing-md) 0;
   align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
 }
 
 /* Main prize row specific styles */
@@ -141,32 +146,50 @@
   margin: 0 0 var(--spacing-md); /* Remove horizontal margins, keep bottom margin */
 }
 
-/* Responsive Styles for Winners Table */
-@media (max-width: 768px) {
+/* Responsive Styles */
+/* Small screens (mobile) */
+@media (min-width: 0px) and (max-width: 480px) {
   #main-container {
     padding: 0; /* Remove padding */
     max-width: none; /* Remove max-width constraint */
     margin: 0; /* Remove auto margins */
+    gap: var(--spacing-md); /* Reduce gap between sections */
   }
 
-  /* Add this rule for the total prize card */
+  /* Total prize card styles for very small screens */
   .total-prize-card {
     width: 100%; /* Make card full width on smaller screens */
-    border-radius: 0; /* Optional: Remove border-radius if it looks odd at full width */
+    border-radius: 0; /* Remove border-radius on full width */
+    padding: var(
+      --spacing-lg
+    ); /* Keep vertical padding the same as main layout */
+  }
+
+  .total-prize-heading {
+    font-size: var(--font-size-xs); /* Smaller heading */
+    margin-bottom: var(--spacing-xxs); /* Reduce margin */
+  }
+
+  .total-prize-value {
+    font-size: var(--font-size-xxl); /* Reduce font size */
+    min-height: 3rem; /* Reduce minimum height */
   }
 
   .winners-heading {
     text-align: center; /* Center heading */
-    padding-top: var(--spacing-md); /* Add padding back above heading */
+    padding-top: var(--spacing-sm); /* Reduce top padding */
+    font-size: var(--font-size-lg); /* Smaller heading */
+    margin-bottom: var(--spacing-xxs); /* Reduce margin */
   }
 
   .winners-table {
-    padding: 0 var(--spacing-smd); /* Add horizontal padding back to table */
+    padding: 0 var(--spacing-sm); /* Reduce horizontal padding */
   }
 
   .winners-header {
     grid-template-columns: 2fr 1fr 1fr 1fr; /* Adjust grid for 4 columns */
-    padding: var(--spacing-sm) var(--spacing-smd); /* Adjust padding */
+    padding: var(--spacing-xxs) var(--spacing-xs); /* Minimal padding */
+    gap: var(--spacing-xxs); /* Minimal gap */
   }
 
   .header-cell.country-cell {
@@ -176,8 +199,8 @@
   .winner-row,
   .main-prize-info {
     grid-template-columns: 2fr 1fr 1fr 1fr; /* Adjust grid for 4 columns */
-    padding: var(--spacing-smd); /* Adjust padding */
-    gap: var(--spacing-sm); /* Adjust gap */
+    padding: var(--spacing-xs); /* Minimal padding */
+    gap: var(--spacing-xxs); /* Minimal gap */
   }
 
   .winner-cell.country-cell {
@@ -185,13 +208,140 @@
   }
 
   .user-info {
-    /* Revert to row direction for photo + text block */
-    /* flex-direction: column; */ /* Remove this */
-    align-items: center; /* Vertically align photo and text block */
-    gap: var(--spacing-sm); /* Adjust gap between photo and text block */
+    align-items: center; /* Vertically align photo and text */
+    gap: var(--spacing-xs); /* Reduce gap between photo and text */
   }
 
-  /* Style the new wrapper for vertical stacking of name/country */
+  /* Style the wrapper for vertical stacking of name/country */
+  .user-name-country-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align text left */
+    gap: 1px; /* Minimal gap between name and country */
+  }
+
+  .user-country-mobile {
+    display: flex; /* Show mobile country info */
+    align-items: center;
+    font-size: var(--font-size-xxs); /* Extra small font */
+  }
+
+  .main-prize-user-info {
+    flex-direction: row; /* Keep main prize user info horizontal */
+    align-items: center; /* Align items center */
+    gap: var(--spacing-xs); /* Reduce gap */
+  }
+
+  .main-prize-user-info .user-country-mobile {
+    display: none; /* Keep hiding mobile country for main prize user */
+  }
+
+  /* Aggressively reduce font sizes for smaller cells */
+  .header-cell,
+  .winner-cell {
+    font-size: var(--font-size-xxs); /* Extra small font */
+  }
+
+  .user-name {
+    font-size: var(--font-size-xs); /* Smaller name font */
+  }
+
+  .win-badge {
+    font-size: var(--font-size-xxs); /* Extra small badges */
+    padding: 0 var(--spacing-xs); /* Reduce padding */
+    gap: var(--spacing-xxs); /* Reduce gap */
+  }
+
+  .main-prize-info {
+    padding: var(--spacing-xs) 0 var(--spacing-xs) 0; /* Minimal padding */
+  }
+
+  .user-photo {
+    width: 28px; /* Smaller photo */
+    height: 28px;
+  }
+
+  .main-prize-image-container {
+    margin: 0 0 var(--spacing-xs); /* Reduce bottom margin */
+  }
+
+  /* Adjust main prize row padding for small screens */
+  .main-prize-row {
+    padding: 0 var(--spacing-xs); /* Reduce horizontal padding */
+  }
+
+  /* Adjust divider for small screens */
+  .main-prize-info {
+    margin-bottom: var(--spacing-xs);
+    padding-bottom: var(--spacing-xs);
+  }
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 481px) and (max-width: 768px) {
+  #main-container {
+    padding: 0; /* Remove padding */
+    max-width: none; /* Remove max-width constraint */
+    margin: 0; /* Remove auto margins */
+    gap: var(--spacing-lg); /* Adjust gap for tablets */
+  }
+
+  /* Total prize card styles for tablets */
+  .total-prize-card {
+    width: 100%; /* Make card full width */
+    border-radius: 0; /* Remove border-radius on full width */
+    padding: var(
+      --spacing-lg
+    ); /* Keep vertical padding the same as main layout */
+  }
+
+  .total-prize-heading {
+    font-size: var(--font-size-sm); /* Standard heading size */
+    margin-bottom: var(--spacing-xs); /* Standard margin */
+  }
+
+  .total-prize-value {
+    font-size: var(--font-size-xxl); /* Slightly reduced font size */
+    min-height: 3.5rem; /* Adjust minimum height */
+  }
+
+  .winners-heading {
+    text-align: center; /* Center heading */
+    padding-top: var(--spacing-md); /* Add padding back above heading */
+    font-size: var(--font-size-xl); /* Standard heading size */
+  }
+
+  .winners-table {
+    padding: 0 var(--spacing-smd); /* Add horizontal padding back to table */
+  }
+
+  .winners-header {
+    grid-template-columns: 2fr 1fr 1fr 1fr; /* Adjust grid for 4 columns */
+    padding: var(--spacing-xs) var(--spacing-sm); /* Adjust padding */
+    gap: var(--spacing-xs); /* Adjust gap */
+  }
+
+  .header-cell.country-cell {
+    display: none; /* Hide country header */
+  }
+
+  .winner-row,
+  .main-prize-info {
+    grid-template-columns: 2fr 1fr 1fr 1fr; /* Adjust grid for 4 columns */
+    padding: var(--spacing-sm); /* Adjust padding */
+    gap: var(--spacing-xs); /* Adjust gap */
+  }
+
+  .winner-cell.country-cell {
+    display: none; /* Hide country cell */
+  }
+
+  .user-info {
+    align-items: center; /* Vertically align photo and text */
+    gap: var(--spacing-sm); /* Standard gap between photo and text */
+  }
+
+  /* Style the wrapper for vertical stacking of name/country */
   .user-name-country-wrapper {
     display: flex;
     flex-direction: column;
@@ -202,12 +352,13 @@
   .user-country-mobile {
     display: flex; /* Show mobile country info */
     align-items: center;
+    font-size: var(--font-size-xs); /* Small font */
   }
 
   .main-prize-user-info {
     flex-direction: row; /* Keep main prize user info horizontal */
     align-items: center; /* Align items center */
-    gap: var(--spacing-sm); /* Add gap for main prize row */
+    gap: var(--spacing-sm); /* Standard gap */
   }
 
   .main-prize-user-info .user-country-mobile {
@@ -217,11 +368,11 @@
   /* Adjust font sizes for smaller cells */
   .header-cell,
   .winner-cell {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-sm); /* Small font */
   }
 
   .user-name {
-    font-size: var(--font-size-md); /* Ensure name is readable */
+    font-size: var(--font-size-sm); /* Small name font */
   }
 
   .win-badge {
@@ -230,32 +381,77 @@
   }
 
   .main-prize-info {
-    padding: var(--spacing-smd) 0; /* Adjust padding */
+    padding: var(--spacing-sm) 0 var(--spacing-sm) 0; /* Adjust padding */
+  }
+
+  .user-photo {
+    width: 36px; /* Adjust photo size */
+    height: 36px;
+  }
+
+  .main-prize-image-container {
+    margin: 0 0 var(--spacing-sm); /* Adjust bottom margin */
+  }
+
+  /* Adjust main prize row padding for medium screens */
+  .main-prize-row {
+    padding: 0 var(--spacing-sm); /* Reduce horizontal padding */
+  }
+
+  /* Adjust divider for medium screens */
+  .main-prize-info {
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
   }
 }
 
-@media (max-width: 480px) {
+/* Large screens (desktops) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  #main-container {
+    padding: var(--spacing-lg); /* Add padding for large screens */
+    gap: var(--spacing-lg); /* Adjust gap */
+  }
+
+  /* Total prize card styles for desktops */
+  .total-prize-card {
+    width: 380px; /* Slightly smaller than default */
+    padding: var(
+      --spacing-lg
+    ); /* Keep vertical padding the same as main layout */
+  }
+
+  .winners-heading {
+    font-size: var(--font-size-xl); /* Standard heading size */
+  }
+
   .winners-header {
-    padding: var(--spacing-xs) var(--spacing-sm);
-    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md); /* Standard padding */
   }
-  .winner-row,
+
+  .winner-row {
+    padding: var(--spacing-md); /* Standard padding */
+  }
+
+  .main-prize-image-container {
+    margin: 0 0 var(--spacing-md); /* Standard margin */
+  }
+
+  /* Adjust main prize row padding for large screens */
+  .main-prize-row {
+    padding: 0 var(--spacing-md); /* Standard horizontal padding */
+  }
+
+  /* Adjust divider for large screens */
   .main-prize-info {
-    padding: var(--spacing-sm);
-    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
   }
-  .header-cell,
-  .winner-cell {
-    font-size: var(--font-size-xs); /* Even smaller font */
-  }
-  .user-name {
-    font-size: var(--font-size-sm);
-  }
-  .user-photo {
-    width: 32px;
-    height: 32px;
-  }
-  .user-country-mobile {
-    font-size: var(--font-size-xs);
+}
+
+/* Extra large screens */
+@media (min-width: 1025px) {
+  #main-container {
+    padding: var(--spacing-xl); /* Extra large padding */
+    gap: var(--spacing-xl); /* Extra large gap */
   }
 }
