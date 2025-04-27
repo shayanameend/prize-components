@@ -1,5 +1,4 @@
 function loadWins({ container, data }) {
-  // Use the data directly without sorting
   data.forEach((win) => {
     let winCard;
 

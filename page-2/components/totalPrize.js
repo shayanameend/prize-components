@@ -18,7 +18,6 @@ function loadTotalPrize({ container, value }) {
   animateCountUp(totalPrizeValue, startValue, value);
 }
 
-// Formats a number (in cents) into a USD currency string.
 function formatCentsToDollars(cents) {
   const dollars = cents / 100;
   const formatted = dollars.toLocaleString("en-US", {
@@ -31,7 +30,6 @@ function formatCentsToDollars(cents) {
   return formatted + " USD";
 }
 
-// Animates a number count-up effect on an HTML element.
 function animateCountUp(element, startValue, endValue, duration = 2000) {
   const startTime = performance.now();
   const difference = endValue - startValue;
@@ -52,7 +50,6 @@ function animateCountUp(element, startValue, endValue, duration = 2000) {
   requestAnimationFrame(updateCount);
 }
 
-// Easing function for the count-up animation.
 function easeOutExpo(x) {
   return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
 }

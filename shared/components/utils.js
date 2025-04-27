@@ -1,6 +1,3 @@
-/**
- * Format date to Month Day, Year or MM/DD/YYYY
- */
 function formatDate(date, longFormat = false) {
   if (longFormat) {
     return new Date(date).toLocaleDateString("en-US", {

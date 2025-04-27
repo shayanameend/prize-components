@@ -1,4 +1,3 @@
-// Creates an image carousel with navigation and indicators
 function createCarousel({
   images,
   altText = "Image",
@@ -48,11 +47,9 @@ function createCarousel({
         img.style.opacity = "1";
       }
 
-      // Calculate and store the natural aspect ratio of the image
       const aspectRatio = this.naturalWidth / this.naturalHeight;
       img.dataset.aspectRatio = aspectRatio.toFixed(2);
 
-      // Add class based on image orientation
       if (aspectRatio > 1.2) {
         img.classList.add("landscape");
       } else if (aspectRatio < 0.8) {

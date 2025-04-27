@@ -38,7 +38,6 @@ function loadWinners({ container, data }) {
 }
 
 function populateWinnersList({ container, data }) {
-  // Use the data directly without sorting
   data.forEach((winner) => {
     let winnerRow;
 

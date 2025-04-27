@@ -72,7 +72,6 @@ function loadProfile({ container, name, photo, country, flag, socialMedia }) {
 
   socialMediaContainer.appendChild(socialMediaLinks);
 
-  // Create a clone for mobile view
   const socialMediaContainerMobile = socialMediaContainer.cloneNode(true);
   socialMediaContainer.classList.add("social-media-desktop");
   socialMediaContainerMobile.classList.add("social-media-mobile");
