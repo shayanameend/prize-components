@@ -137,45 +137,51 @@
   margin: 0 0 var(--spacing-md);
 }
 
-@media (max-width: 480px) {
+/* Small mobile screens (300px-360px) */
+@media (max-width: 360px) {
   #main-container {
     padding: 0;
     max-width: none;
     margin: 0;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
+  }
+
+  #winners-container {
+    gap: var(--spacing-sm);
   }
 
   .total-prize-card {
     width: 100%;
     border-radius: 0;
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
   }
 
   .total-prize-heading {
-    font-size: var(--font-size-xs);
-    margin-bottom: var(--spacing-xxs);
+    font-size: var(--font-size-xxs);
+    margin-bottom: var(--spacing-xs);
   }
 
   .total-prize-value {
-    font-size: var(--font-size-xxl);
-    min-height: 3rem;
+    font-size: var(--font-size-xl);
+    min-height: 2.5rem;
   }
 
   .winners-heading {
     text-align: center;
-    padding-top: var(--spacing-sm);
-    font-size: var(--font-size-lg);
-    margin-bottom: var(--spacing-xxs);
+    padding-top: var(--spacing-xs);
+    font-size: var(--font-size-md);
+    margin-bottom: var(--spacing-xs);
   }
 
   .winners-table {
-    padding: 0 var(--spacing-sm);
+    padding: 0 var(--spacing-xs);
+    gap: var(--spacing-xs);
   }
 
   .winners-header {
     grid-template-columns: 2fr 1fr 1fr 1fr;
-    padding: var(--spacing-xxs) var(--spacing-xs);
-    gap: var(--spacing-xxs);
+    padding: var(--spacing-xs) var(--spacing-xs);
+    gap: var(--spacing-sm);
   }
 
   .header-cell.country-cell {
@@ -186,7 +192,7 @@
   .main-prize-info {
     grid-template-columns: 2fr 1fr 1fr 1fr;
     padding: var(--spacing-xs);
-    gap: var(--spacing-xxs);
+    gap: var(--spacing-sm);
   }
 
   .winner-cell.country-cell {
@@ -202,7 +208,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 1px;
+    gap: 2px;
   }
 
   .user-country-mobile {
@@ -227,7 +233,7 @@
   }
 
   .user-name {
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-xxs);
   }
 
   .win-badge {
@@ -241,8 +247,8 @@
   }
 
   .user-photo {
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
   }
 
   .main-prize-image-container {
@@ -251,6 +257,7 @@
 
   .main-prize-row {
     padding: 0 var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
   }
 
   .main-prize-info {
@@ -259,11 +266,145 @@
   }
 }
 
+/* Regular mobile screens (361px-480px) */
+@media (min-width: 361px) and (max-width: 480px) {
+  #main-container {
+    padding: 0;
+    max-width: none;
+    margin: 0;
+    gap: var(--spacing-md);
+  }
+
+  #winners-container {
+    gap: var(--spacing-md);
+  }
+
+  .total-prize-card {
+    width: 100%;
+    border-radius: 0;
+    padding: var(--spacing-lg);
+  }
+
+  .total-prize-heading {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .total-prize-value {
+    font-size: var(--font-size-xxl);
+    min-height: 3rem;
+  }
+
+  .winners-heading {
+    text-align: center;
+    padding-top: var(--spacing-sm);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .winners-table {
+    padding: 0 var(--spacing-sm);
+    gap: var(--spacing-sm);
+  }
+
+  .winners-header {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    gap: var(--spacing-sm);
+  }
+
+  .header-cell.country-cell {
+    display: none;
+  }
+
+  .winner-row,
+  .main-prize-info {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .winner-cell.country-cell {
+    display: none;
+  }
+
+  .user-info {
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .user-name-country-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .user-country-mobile {
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-xxs);
+  }
+
+  .main-prize-user-info {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .main-prize-user-info .user-country-mobile {
+    display: none;
+  }
+
+  .header-cell,
+  .winner-cell {
+    font-size: var(--font-size-xxs);
+  }
+
+  .user-name {
+    font-size: var(--font-size-xs);
+  }
+
+  .win-badge {
+    font-size: var(--font-size-xxs);
+    padding: 0 var(--spacing-xs);
+    gap: var(--spacing-xxs);
+  }
+
+  .main-prize-info {
+    padding: var(--spacing-sm) 0 var(--spacing-sm) 0;
+  }
+
+  .user-photo {
+    width: 28px;
+    height: 28px;
+  }
+
+  .main-prize-image-container {
+    margin: 0 0 var(--spacing-sm);
+  }
+
+  .main-prize-row {
+    padding: 0 var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .main-prize-info {
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+  }
+}
+
 @media (min-width: 481px) and (max-width: 768px) {
   #main-container {
     padding: 0;
     max-width: none;
     margin: 0;
+    gap: var(--spacing-lg);
+  }
+
+  #winners-container {
     gap: var(--spacing-lg);
   }
 
@@ -287,16 +428,18 @@
     text-align: center;
     padding-top: var(--spacing-md);
     font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-md);
   }
 
   .winners-table {
     padding: 0 var(--spacing-smd);
+    gap: var(--spacing-md);
   }
 
   .winners-header {
     grid-template-columns: 2fr 1fr 1fr 1fr;
-    padding: var(--spacing-xs) var(--spacing-sm);
-    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    gap: var(--spacing-md);
   }
 
   .header-cell.country-cell {
@@ -306,8 +449,9 @@
   .winner-row,
   .main-prize-info {
     grid-template-columns: 2fr 1fr 1fr 1fr;
-    padding: var(--spacing-sm);
-    gap: var(--spacing-xs);
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
   }
 
   .winner-cell.country-cell {
@@ -316,14 +460,14 @@
 
   .user-info {
     align-items: center;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-md);
   }
 
   .user-name-country-wrapper {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 2px;
+    gap: 3px;
   }
 
   .user-country-mobile {
@@ -335,7 +479,7 @@
   .main-prize-user-info {
     flex-direction: row;
     align-items: center;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-md);
   }
 
   .main-prize-user-info .user-country-mobile {
@@ -357,7 +501,7 @@
   }
 
   .main-prize-info {
-    padding: var(--spacing-sm) 0 var(--spacing-sm) 0;
+    padding: var(--spacing-md) 0 var(--spacing-md) 0;
   }
 
   .user-photo {
@@ -366,16 +510,17 @@
   }
 
   .main-prize-image-container {
-    margin: 0 0 var(--spacing-sm);
+    margin: 0 0 var(--spacing-md);
   }
 
   .main-prize-row {
-    padding: 0 var(--spacing-sm);
+    padding: 0 var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
   }
 
   .main-prize-info {
-    margin-bottom: var(--spacing-sm);
-    padding-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
   }
 }
 

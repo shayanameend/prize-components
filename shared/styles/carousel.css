@@ -274,7 +274,9 @@
 @media (max-width: 360px) {
   .carousel-image-container {
     aspect-ratio: 16 / 9;
-    max-height: 250px;
+    max-height: 220px;
+    min-height: 180px;
+    min-width: 250px;
   }
 
   .carousel-nav {
@@ -286,6 +288,37 @@
   .carousel-badge {
     top: var(--spacing-xs);
     left: var(--spacing-xs);
-    padding: 3px var(--spacing-sm);
+    padding: 2px var(--spacing-xs);
+    font-size: var(--font-size-xxs);
+    gap: var(--spacing-xxs);
+  }
+
+  .carousel-badge i {
+    font-size: var(--font-size-xxs);
+  }
+
+  .carousel-dots {
+    bottom: var(--spacing-xs);
+    gap: var(--spacing-xs);
+  }
+
+  .dot {
+    width: 5px;
+    height: 5px;
+  }
+}
+
+/* Add support for very small screens */
+@media (max-width: 320px) {
+  .carousel-image-container {
+    aspect-ratio: 16 / 9;
+    max-height: 200px;
+    min-height: 160px;
+    min-width: 240px;
+  }
+
+  .carousel-nav {
+    width: 18px;
+    height: 24px;
   }
 }
