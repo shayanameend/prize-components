@@ -102,10 +102,8 @@ function createMainPrizeCard(win) {
   dateContainer.className = "main-prize-date";
   dateContainer.textContent = `Selected ${formatDate(win.date, true)}`;
 
-  const infoSection = document.createElement("div");
-  infoSection.className = "main-prize-info";
-
   const titleContainer = document.createElement("div");
+  titleContainer.className = "main-prize-title-container";
 
   const subtitle = document.createElement("div");
   subtitle.className = "main-prize-subtitle";
@@ -117,11 +115,40 @@ function createMainPrizeCard(win) {
   title.textContent = win.title;
   titleContainer.appendChild(title);
 
-  infoSection.appendChild(titleContainer);
+  const infoSection = document.createElement("div");
+  infoSection.className = "main-prize-info";
+
+  const mobileLayout = document.createElement("div");
+  mobileLayout.className = "main-prize-mobile-layout";
+
+  const mobileDateContainer = document.createElement("div");
+  mobileDateContainer.className = "main-prize-date";
+  mobileDateContainer.textContent = `Selected ${formatDate(win.date, true)}`;
+
+  const mobileTitleContainer = document.createElement("div");
+  mobileTitleContainer.className = "main-prize-title-container";
+
+  const mobileSubtitle = document.createElement("div");
+  mobileSubtitle.className = "main-prize-subtitle";
+  mobileSubtitle.textContent = win.subtitle;
+  mobileTitleContainer.appendChild(mobileSubtitle);
+
+  const mobileTitle = document.createElement("div");
+  mobileTitle.className = "main-prize-title";
+  mobileTitle.textContent = win.title;
+  mobileTitleContainer.appendChild(mobileTitle);
+
+  mobileLayout.appendChild(mobileDateContainer);
+  mobileLayout.appendChild(mobileTitleContainer);
+
+  const desktopLayout = document.createElement("div");
+  desktopLayout.className = "main-prize-desktop-layout";
+  desktopLayout.appendChild(dateContainer);
+  desktopLayout.appendChild(titleContainer);
 
   card.appendChild(imageContainer);
-  card.appendChild(dateContainer);
-  card.appendChild(infoSection);
+  card.appendChild(mobileLayout);
+  card.appendChild(desktopLayout);
 
   return card;
 }
