@@ -1,26 +1,26 @@
 function loadProfile({ container, name, photo, country, flag, socialMedia }) {
   const profileCard = document.createElement("div");
-  profileCard.className = "profile-card card";
+  profileCard.className = "ca-profile-card ca-card";
 
   const profileContent = document.createElement("div");
-  profileContent.className = "profile-content";
+  profileContent.className = "ca-profile-content";
 
   const profilePhoto = document.createElement("img");
-  profilePhoto.className = "profile-photo";
+  profilePhoto.className = "ca-profile-photo";
   profilePhoto.src = photo;
   profilePhoto.alt = `${name}'s profile photo`;
   profileContent.appendChild(profilePhoto);
 
   const profileTextInfo = document.createElement("div");
-  profileTextInfo.className = "profile-text-info";
+  profileTextInfo.className = "ca-profile-text-info";
 
   const profileName = document.createElement("h2");
-  profileName.className = "profile-name";
+  profileName.className = "ca-profile-name";
   profileName.textContent = name;
   profileTextInfo.appendChild(profileName);
 
   const profileCountry = document.createElement("div");
-  profileCountry.className = "profile-country";
+  profileCountry.className = "ca-profile-country";
   profileCountry.innerHTML = `<span>${country}</span> ${flag}`;
   profileTextInfo.appendChild(profileCountry);
 
@@ -29,25 +29,25 @@ function loadProfile({ container, name, photo, country, flag, socialMedia }) {
   profileCard.appendChild(profileContent);
 
   const divider = document.createElement("div");
-  divider.className = "profile-divider";
+  divider.className = "ca-profile-divider";
   profileCard.appendChild(divider);
 
   const socialMediaContainer = document.createElement("div");
-  socialMediaContainer.className = "social-media-container";
+  socialMediaContainer.className = "ca-social-media-container";
 
   const socialMediaHeading = document.createElement("h3");
-  socialMediaHeading.className = "social-media-heading";
+  socialMediaHeading.className = "ca-social-media-heading";
   socialMediaHeading.textContent = "Social Media";
   socialMediaContainer.appendChild(socialMediaHeading);
 
   const socialMediaLinks = document.createElement("div");
-  socialMediaLinks.className = "social-media-links";
+  socialMediaLinks.className = "ca-social-media-links";
 
   if (socialMedia.facebook) {
     const facebookLink = createSocialLink(
       socialMedia.facebook.url,
       "fa-brands fa-facebook-f",
-      socialMedia.facebook.label,
+      socialMedia.facebook.label
     );
     socialMediaLinks.appendChild(facebookLink);
   }
@@ -56,7 +56,7 @@ function loadProfile({ container, name, photo, country, flag, socialMedia }) {
     const instagramLink = createSocialLink(
       socialMedia.instagram.url,
       "fa-brands fa-instagram",
-      socialMedia.instagram.label,
+      socialMedia.instagram.label
     );
     socialMediaLinks.appendChild(instagramLink);
   }
@@ -65,7 +65,7 @@ function loadProfile({ container, name, photo, country, flag, socialMedia }) {
     const twitterLink = createSocialLink(
       socialMedia.twitter.url,
       "fa-brands fa-twitter",
-      socialMedia.twitter.label,
+      socialMedia.twitter.label
     );
     socialMediaLinks.appendChild(twitterLink);
   }
@@ -73,8 +73,8 @@ function loadProfile({ container, name, photo, country, flag, socialMedia }) {
   socialMediaContainer.appendChild(socialMediaLinks);
 
   const socialMediaContainerMobile = socialMediaContainer.cloneNode(true);
-  socialMediaContainer.classList.add("social-media-desktop");
-  socialMediaContainerMobile.classList.add("social-media-mobile");
+  socialMediaContainer.classList.add("ca-social-media-desktop");
+  socialMediaContainerMobile.classList.add("ca-social-media-mobile");
 
   profileCard.appendChild(socialMediaContainer);
 
@@ -84,13 +84,13 @@ function loadProfile({ container, name, photo, country, flag, socialMedia }) {
 
 function createSocialLink(url, iconClass, label) {
   const link = document.createElement("a");
-  link.className = "social-link";
+  link.className = "ca-social-link";
   link.href = url;
   link.target = "_blank";
   link.rel = "noopener noreferrer";
 
   const icon = document.createElement("i");
-  icon.className = `${iconClass} social-icon`;
+  icon.className = `${iconClass} ca-social-icon`;
   link.appendChild(icon);
 
   const text = document.createElement("span");

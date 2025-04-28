@@ -1,14 +1,14 @@
 function loadTotalPrize({ container, value }) {
   const totalPrizeCard = document.createElement("div");
-  totalPrizeCard.className = "total-prize-card card";
+  totalPrizeCard.className = "ca-total-prize-card ca-card";
 
   const totalPrizeHeading = document.createElement("div");
-  totalPrizeHeading.className = "total-prize-heading";
+  totalPrizeHeading.className = "ca-total-prize-heading";
   totalPrizeHeading.textContent = "Total Prize Value Given Away";
   totalPrizeCard.appendChild(totalPrizeHeading);
 
   const totalPrizeValue = document.createElement("div");
-  totalPrizeValue.className = "total-prize-value";
+  totalPrizeValue.className = "ca-total-prize-value";
   totalPrizeValue.textContent = "$0.00 USD";
   totalPrizeCard.appendChild(totalPrizeValue);
 

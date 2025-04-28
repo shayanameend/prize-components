@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -17,9 +17,9 @@
     />
   </head>
   <body>
-    <div id="main-container">
-      <div id="total-prize-container"></div>
-      <div id="winners-container"></div>
+    <div id="ca-main-container">
+      <div id="ca-total-prize-container"></div>
+      <div id="ca-winners-container"></div>
     </div>
 
     <script src="../shared/components/utils.js"></script>
@@ -31,12 +31,12 @@
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         loadTotalPrize({
-          container: document.querySelector("#total-prize-container"),
+          container: document.querySelector("#ca-total-prize-container"),
           value: 102400,
         });
 
         loadWinners({
-          container: document.querySelector("#winners-container"),
+          container: document.querySelector("#ca-winners-container"),
           data: [
             {
               name: "Howard W.",

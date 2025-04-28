@@ -1,4 +1,4 @@
-.win-badge {
+.ca-win-badge {
   display: inline-flex;
   gap: var(--spacing-sm);
   align-items: center;
@@ -9,49 +9,48 @@
   white-space: nowrap;
 }
 
-.badge-mini {
+.ca-badge-mini {
   background-color: var(--mini-badge-bg);
   color: var(--mini-badge-text);
 }
 
-.badge-main {
+.ca-badge-main {
   background-color: var(--main-badge-bg);
   color: var(--main-badge-text);
 }
 
-
 @media (max-width: 360px) {
-  .win-badge {
+  .ca-win-badge {
     padding: 2px var(--spacing-xs);
     gap: var(--spacing-xs);
     font-size: var(--font-size-xxs);
   }
 
-  .win-badge i {
+  .ca-win-badge i {
     font-size: var(--font-size-xxs);
   }
 }
 
 @media (min-width: 361px) and (max-width: 480px) {
-  .win-badge {
+  .ca-win-badge {
     padding: 2px var(--spacing-sm);
     gap: var(--spacing-xs);
     font-size: var(--font-size-xxs);
   }
 
-  .win-badge i {
+  .ca-win-badge i {
     font-size: var(--font-size-xxs);
   }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
-  .win-badge {
+  .ca-win-badge {
     padding: 2px var(--spacing-sm);
     gap: var(--spacing-sm);
     font-size: var(--font-size-xs);
   }
 
-  .win-badge i {
+  .ca-win-badge i {
     font-size: var(--font-size-xs);
   }
 }

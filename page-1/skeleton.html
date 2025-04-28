@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -17,9 +17,9 @@
     />
   </head>
   <body>
-    <div id="main-container">
-      <div id="profile-container"></div>
-      <div id="wins-container"></div>
+    <div id="ca-main-container">
+      <div id="ca-profile-container"></div>
+      <div id="ca-wins-container"></div>
     </div>
 
     <script src="../shared/components/utils.js"></script>
@@ -31,7 +31,7 @@
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         loadProfile({
-          container: document.querySelector("#profile-container"),
+          container: document.querySelector("#ca-profile-container"),
           name: "Nur A.",
           photo: "./assets/profile.jpg",
           country: "United States",
@@ -53,7 +53,7 @@
         });
 
         loadWins({
-          container: document.querySelector("#wins-container"),
+          container: document.querySelector("#ca-wins-container"),
           data: [
             {
               type: "incentive",

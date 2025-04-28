@@ -1,4 +1,4 @@
-#main-container {
+#ca-main-container {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xl);
@@ -6,12 +6,12 @@
   max-width: 1024px;
 }
 
-#total-prize-container {
+#ca-total-prize-container {
   display: flex;
   justify-content: center;
 }
 
-.total-prize-card {
+.ca-total-prize-card {
   background-color: #0a1929;
   color: white;
   display: flex;
@@ -24,12 +24,12 @@
   max-width: 100%;
 }
 
-.total-prize-heading {
+.ca-total-prize-heading {
   font-size: var(--font-size-sm);
   margin-bottom: var(--spacing-xs);
 }
 
-.total-prize-value {
+.ca-total-prize-value {
   font-size: var(--font-size-xxxl);
   font-weight: 500;
   position: relative;
@@ -39,37 +39,37 @@
   align-items: center;
 }
 
-#winners-container {
+#ca-winners-container {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
 }
 
-.winners-heading {
+.ca-winners-heading {
   font-size: var(--font-size-xl);
   font-weight: 700;
   margin-bottom: var(--spacing-xs);
 }
 
-.winners-table {
+.ca-winners-table {
   display: flex;
   flex-direction: column;
   width: 100%;
   gap: var(--spacing-xs);
 }
 
-.winners-header {
+.ca-winners-header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   padding: var(--spacing-sm) var(--spacing-md);
 }
 
-.header-cell {
+.ca-header-cell {
   font-weight: 600;
   color: var(--text-primary);
 }
 
-.winner-row {
+.ca-winner-row {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   padding: var(--spacing-md);
@@ -78,43 +78,43 @@
   margin-bottom: var(--spacing-md);
 }
 
-.winner-cell {
+.ca-winner-cell {
   display: flex;
   align-items: center;
 }
 
-.user-info {
+.ca-user-info {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
 }
 
-.user-photo {
+.ca-user-photo {
   width: 40px;
   height: 40px;
   border-radius: var(--border-radius-circle);
   object-fit: cover;
 }
 
-.user-name {
+.ca-user-name {
   font-weight: 600;
 }
 
-.country-info {
+.ca-country-info {
   display: flex;
   align-items: center;
   gap: var(--spacing-xs);
   color: var(--text-light);
 }
 
-.user-country-mobile {
+.ca-user-country-mobile {
   display: none;
   font-size: var(--font-size-sm);
   color: var(--text-light);
   gap: var(--spacing-xs);
 }
 
-.main-prize-row {
+.ca-main-prize-row {
   display: flex;
   flex-direction: column;
   padding: 0 var(--spacing-md);
@@ -123,7 +123,7 @@
   position: relative;
 }
 
-.main-prize-info {
+.ca-main-prize-info {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   padding: var(--spacing-md) 0;
@@ -133,404 +133,404 @@
   padding-bottom: var(--spacing-md);
 }
 
-.main-prize-image-container {
+.ca-main-prize-image-container {
   margin: 0 0 var(--spacing-md);
 }
 
 @media (max-width: 360px) {
-  #main-container {
+  #ca-main-container {
     padding: 0;
     max-width: none;
     margin: 0;
     gap: var(--spacing-sm);
   }
 
-  #winners-container {
+  #ca-winners-container {
     gap: var(--spacing-sm);
   }
 
-  .total-prize-card {
+  .ca-total-prize-card {
     width: 100%;
     border-radius: 0;
     padding: var(--spacing-md);
   }
 
-  .total-prize-heading {
+  .ca-total-prize-heading {
     font-size: var(--font-size-xxs);
     margin-bottom: var(--spacing-xs);
   }
 
-  .total-prize-value {
+  .ca-total-prize-value {
     font-size: var(--font-size-xl);
     min-height: 2.5rem;
   }
 
-  .winners-heading {
+  .ca-winners-heading {
     text-align: center;
     padding-top: var(--spacing-xs);
     font-size: var(--font-size-md);
     margin-bottom: var(--spacing-xs);
   }
 
-  .winners-table {
+  .ca-winners-table {
     padding: 0 var(--spacing-xs);
     gap: var(--spacing-xs);
   }
 
-  .winners-header {
+  .ca-winners-header {
     grid-template-columns: 2fr 1fr 1fr 1fr;
     padding: var(--spacing-xs) var(--spacing-xs);
     gap: var(--spacing-sm);
   }
 
-  .header-cell.country-cell {
+  .ca-header-cell.ca-country-cell {
     display: none;
   }
 
-  .winner-row,
-  .main-prize-info {
+  .ca-winner-row,
+  .ca-main-prize-info {
     grid-template-columns: 2fr 1fr 1fr 1fr;
     padding: var(--spacing-xs);
     gap: var(--spacing-sm);
   }
 
-  .winner-cell.country-cell {
+  .ca-winner-cell.ca-country-cell {
     display: none;
   }
 
-  .user-info {
+  .ca-user-info {
     align-items: center;
     gap: var(--spacing-xs);
   }
 
-  .user-name-country-wrapper {
+  .ca-user-name-country-wrapper {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 2px;
   }
 
-  .user-country-mobile {
+  .ca-user-country-mobile {
     display: flex;
     align-items: center;
     font-size: var(--font-size-xxs);
   }
 
-  .header-cell,
-  .winner-cell {
+  .ca-header-cell,
+  .ca-winner-cell {
     font-size: var(--font-size-xxs);
   }
 
-  .user-name {
+  .ca-user-name {
     font-size: var(--font-size-xxs);
   }
 
-  .win-badge {
+  .ca-win-badge {
     font-size: var(--font-size-xxs);
     padding: 0 var(--spacing-xs);
     gap: var(--spacing-xxs);
   }
 
-  .main-prize-info {
+  .ca-main-prize-info {
     padding: var(--spacing-xs) 0 var(--spacing-xs) 0;
   }
 
-  .user-photo {
+  .ca-user-photo {
     width: 24px;
     height: 24px;
   }
 
-  .main-prize-image-container {
+  .ca-main-prize-image-container {
     margin: 0 0 var(--spacing-xs);
   }
 
-  .main-prize-row {
+  .ca-main-prize-row {
     padding: 0 var(--spacing-xs);
     margin-bottom: var(--spacing-sm);
   }
 
-  .main-prize-info {
+  .ca-main-prize-info {
     margin-bottom: var(--spacing-xs);
     padding-bottom: var(--spacing-xs);
   }
 }
 
 @media (min-width: 361px) and (max-width: 480px) {
-  #main-container {
+  #ca-main-container {
     padding: 0;
     max-width: none;
     margin: 0;
     gap: var(--spacing-md);
   }
 
-  #winners-container {
+  #ca-winners-container {
     gap: var(--spacing-md);
   }
 
-  .total-prize-card {
+  .ca-total-prize-card {
     width: 100%;
     border-radius: 0;
     padding: var(--spacing-lg);
   }
 
-  .total-prize-heading {
+  .ca-total-prize-heading {
     font-size: var(--font-size-xs);
     margin-bottom: var(--spacing-xs);
   }
 
-  .total-prize-value {
+  .ca-total-prize-value {
     font-size: var(--font-size-xxl);
     min-height: 3rem;
   }
 
-  .winners-heading {
+  .ca-winners-heading {
     text-align: center;
     padding-top: var(--spacing-sm);
     font-size: var(--font-size-lg);
     margin-bottom: var(--spacing-sm);
   }
 
-  .winners-table {
+  .ca-winners-table {
     padding: 0 var(--spacing-sm);
     gap: var(--spacing-sm);
   }
 
-  .winners-header {
+  .ca-winners-header {
     grid-template-columns: 2fr 1fr 1fr 1fr;
     padding: var(--spacing-xs) var(--spacing-sm);
     gap: var(--spacing-sm);
   }
 
-  .header-cell.country-cell {
+  .ca-header-cell.ca-country-cell {
     display: none;
   }
 
-  .winner-row,
-  .main-prize-info {
+  .ca-winner-row,
+  .ca-main-prize-info {
     grid-template-columns: 2fr 1fr 1fr 1fr;
     padding: var(--spacing-sm);
     gap: var(--spacing-sm);
     margin-bottom: var(--spacing-sm);
   }
 
-  .winner-cell.country-cell {
+  .ca-winner-cell.ca-country-cell {
     display: none;
   }
 
-  .user-info {
+  .ca-user-info {
     align-items: center;
     gap: var(--spacing-sm);
   }
 
-  .user-name-country-wrapper {
+  .ca-user-name-country-wrapper {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 2px;
   }
 
-  .user-country-mobile {
+  .ca-user-country-mobile {
     display: flex;
     align-items: center;
     font-size: var(--font-size-xxs);
   }
 
-  .header-cell,
-  .winner-cell {
+  .ca-header-cell,
+  .ca-winner-cell {
     font-size: var(--font-size-xxs);
   }
 
-  .user-name {
+  .ca-user-name {
     font-size: var(--font-size-xs);
   }
 
-  .win-badge {
+  .ca-win-badge {
     font-size: var(--font-size-xxs);
     padding: 0 var(--spacing-xs);
     gap: var(--spacing-xxs);
   }
 
-  .main-prize-info {
+  .ca-main-prize-info {
     padding: var(--spacing-sm) 0 var(--spacing-sm) 0;
   }
 
-  .user-photo {
+  .ca-user-photo {
     width: 28px;
     height: 28px;
   }
 
-  .main-prize-image-container {
+  .ca-main-prize-image-container {
     margin: 0 0 var(--spacing-sm);
   }
 
-  .main-prize-row {
+  .ca-main-prize-row {
     padding: 0 var(--spacing-sm);
     margin-bottom: var(--spacing-md);
   }
 
-  .main-prize-info {
+  .ca-main-prize-info {
     margin-bottom: var(--spacing-sm);
     padding-bottom: var(--spacing-sm);
   }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
-  #main-container {
+  #ca-main-container {
     padding: 0;
     max-width: none;
     margin: 0;
     gap: var(--spacing-lg);
   }
 
-  #winners-container {
+  #ca-winners-container {
     gap: var(--spacing-lg);
   }
 
-  .total-prize-card {
+  .ca-total-prize-card {
     width: 100%;
     border-radius: 0;
     padding: var(--spacing-lg);
   }
 
-  .total-prize-heading {
+  .ca-total-prize-heading {
     font-size: var(--font-size-sm);
     margin-bottom: var(--spacing-xs);
   }
 
-  .total-prize-value {
+  .ca-total-prize-value {
     font-size: var(--font-size-xxl);
     min-height: 3.5rem;
   }
 
-  .winners-heading {
+  .ca-winners-heading {
     text-align: center;
     padding-top: var(--spacing-md);
     font-size: var(--font-size-xl);
     margin-bottom: var(--spacing-md);
   }
 
-  .winners-table {
+  .ca-winners-table {
     padding: 0 var(--spacing-smd);
     gap: var(--spacing-md);
   }
 
-  .winners-header {
+  .ca-winners-header {
     grid-template-columns: 2fr 1fr 1fr 1fr;
     padding: var(--spacing-sm) var(--spacing-md);
     gap: var(--spacing-md);
   }
 
-  .header-cell.country-cell {
+  .ca-header-cell.ca-country-cell {
     display: none;
   }
 
-  .winner-row,
-  .main-prize-info {
+  .ca-winner-row,
+  .ca-main-prize-info {
     grid-template-columns: 2fr 1fr 1fr 1fr;
     padding: var(--spacing-md);
     gap: var(--spacing-md);
     margin-bottom: var(--spacing-md);
   }
 
-  .winner-cell.country-cell {
+  .ca-winner-cell.ca-country-cell {
     display: none;
   }
 
-  .user-info {
+  .ca-user-info {
     align-items: center;
     gap: var(--spacing-md);
   }
 
-  .user-name-country-wrapper {
+  .ca-user-name-country-wrapper {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 3px;
   }
 
-  .user-country-mobile {
+  .ca-user-country-mobile {
     display: flex;
     align-items: center;
     font-size: var(--font-size-xs);
   }
 
-  .header-cell,
-  .winner-cell {
+  .ca-header-cell,
+  .ca-winner-cell {
     font-size: var(--font-size-sm);
   }
 
-  .user-name {
+  .ca-user-name {
     font-size: var(--font-size-sm);
   }
 
-  .win-badge {
+  .ca-win-badge {
     font-size: var(--font-size-xs);
     padding: 1px var(--spacing-xs);
   }
 
-  .main-prize-info {
+  .ca-main-prize-info {
     padding: var(--spacing-md) 0 var(--spacing-md) 0;
   }
 
-  .user-photo {
+  .ca-user-photo {
     width: 36px;
     height: 36px;
   }
 
-  .main-prize-image-container {
+  .ca-main-prize-image-container {
     margin: 0 0 var(--spacing-md);
   }
 
-  .main-prize-row {
+  .ca-main-prize-row {
     padding: 0 var(--spacing-md);
     margin-bottom: var(--spacing-lg);
   }
 
-  .main-prize-info {
+  .ca-main-prize-info {
     margin-bottom: var(--spacing-md);
     padding-bottom: var(--spacing-md);
   }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  #main-container {
+  #ca-main-container {
     padding: var(--spacing-lg);
     gap: var(--spacing-lg);
   }
 
-  .total-prize-card {
+  .ca-total-prize-card {
     width: 380px;
     padding: var(--spacing-lg);
   }
 
-  .winners-heading {
+  .ca-winners-heading {
     font-size: var(--font-size-xl);
   }
 
-  .winners-header {
+  .ca-winners-header {
     padding: var(--spacing-sm) var(--spacing-md);
   }
 
-  .winner-row {
+  .ca-winner-row {
     padding: var(--spacing-md);
   }
 
-  .main-prize-image-container {
+  .ca-main-prize-image-container {
     margin: 0 0 var(--spacing-md);
   }
 
-  .main-prize-row {
+  .ca-main-prize-row {
     padding: 0 var(--spacing-md);
   }
 
-  .main-prize-info {
+  .ca-main-prize-info {
     margin-bottom: var(--spacing-md);
     padding-bottom: var(--spacing-md);
   }
 }
 
 @media (min-width: 1025px) {
-  #main-container {
+  #ca-main-container {
     padding: var(--spacing-xl);
     gap: var(--spacing-xl);
   }
